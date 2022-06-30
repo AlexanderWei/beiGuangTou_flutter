@@ -78,14 +78,15 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
     return Container(
       child: Column(
         children: [
-          MyText(
-            margin: EdgeInsets.only(top: 36.sm),
-            padding: EdgeInsets.only(left: 25.sm),
-            text: "你好，\n欢迎来到北广投",
-            width: 1.sw,
-            height: 36.sm * 2,
-            maxLines: 2,
-            style: TextStyle(fontSize: 26.sm, fontWeight: FontWeight.bold),
+          Container(
+            margin: EdgeInsets.only(left: 28.sm, top: 36.sm),
+            child: Text(
+              "你好，\n欢迎来到北广投",
+              style: TextStyle(
+                fontSize: 26.sm,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
 
           SizedBox(height: 53.h),
@@ -134,9 +135,7 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
           Container(
             margin: EdgeInsets.only(left: 28.sm),
             child: GestureDetector(
-              onTap: () {
-                print("开始密码登录。");
-              },
+              onTap: () {},
               child: Text(
                 "密码登录",
                 style:

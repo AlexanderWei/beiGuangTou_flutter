@@ -59,12 +59,13 @@ printScreenInformation() {
 Widget backgroundImg() {
   double top = 1.sh > 800 ? 145.h : 100.h;
   return Positioned(
-      top: top,
-      child: MyImage(
-        width: 1.sw,
-        height: 774 / 2.sm,
-        image: Image.asset("assets/login/login_bg.png"),
-      ));
+    top: top,
+    child: Container(
+      width: 1.sw,
+      alignment: Alignment.center,
+      child: Image.asset("assets/login/login_bg.png"),
+    ),
+  );
 }
 
 /**标题 */
@@ -72,14 +73,15 @@ Widget titleLabel() {
   double top = 1.sh > 800 ? 90.h : 54.h;
 
   return Positioned(
-    child: MyText(
-      text: "北广投，您身边的VIP！",
-      width: 1.sw,
-      height: 37.sm,
-      style: TextStyle(fontSize: 26.sm),
-      textAlign: TextAlign.center,
-    ),
     top: top,
+    child: Container(
+      alignment: Alignment.center,
+      width: 1.sw,
+      child: Text(
+        "北广投，您身边的VIP！",
+        style: TextStyle(fontSize: 26.sm),
+      ),
+    ),
   );
 }
 
