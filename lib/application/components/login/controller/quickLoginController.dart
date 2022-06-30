@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/application/support_file/common_header.dart';
 
@@ -52,12 +53,15 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
         return Stack(
           children: [
             phoneLoginUI(context),
+
+            // 用户注册等相关协议
+            relatedAgreements(),
           ],
         );
 
         break;
 
-      case QuickLoginType.quickLoginTypeByAccountPassword:
+      case QuickLoginType.quickLoginTypeByAccountPassword: // 账号密码登录类型
         return Container(
           color: Colors.green,
         );
@@ -145,6 +149,42 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
           ),
         ],
         crossAxisAlignment: CrossAxisAlignment.start,
+      ),
+    );
+  }
+
+  /** 用户注册等相关协议 */
+  Widget relatedAgreements() {
+    return Positioned(
+      bottom: 79.h,
+      child: Container(
+        width: 1.sw,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "登录即已同意",
+              style: TextStyle(
+                fontSize: 12.sm,
+                color: AppConstant.textGrayColor,
+              ),
+            ),
+
+            // 可点击部分
+            GestureDetector(
+              onTap: () {
+                print("👩来了。");
+              },
+              child: Text(
+                "《用户注册等相关协议》",
+                style: TextStyle(
+                  fontSize: 12.sm,
+                  color: AppConstant.themeYellow,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

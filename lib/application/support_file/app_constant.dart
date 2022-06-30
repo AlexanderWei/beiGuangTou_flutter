@@ -4,4 +4,5 @@ class AppConstant {
   /** 颜色 */
   static Color themeYellow = Color(0xffCAA26F);
   static Color btnDisableColor = Color.fromRGBO(223, 223, 223, 1);
+  static Color textGrayColor = Color(0xff979797);
 }
