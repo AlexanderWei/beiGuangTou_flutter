@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../components/login/controller/landingPage_controller.dart';
 import '../support_file/common_header.dart';
-import '../components/login/controller/landingPageController.dart';
 
 class LoginProvider with ChangeNotifier {
   Widget appRoot = Container();

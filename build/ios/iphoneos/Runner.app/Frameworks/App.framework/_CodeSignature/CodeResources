@@ -10,7 +10,7 @@
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		2omXp3vvKT4/qSqbISUdhnZEhSo=
+		R8+Gxjr93JfgM9b9Bcg7OgayL0A=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -18,11 +18,15 @@
 		</data>
 		<key>flutter_assets/NOTICES.Z</key>
 		<data>
-		ibDKGEDGtQNerP2hF2yalWf1KBk=
+		M47U8RVXn1OtG5I+bJmApQgkR8Y=
 		</data>
 		<key>flutter_assets/assets/common/2.0x/arrow_enter.png</key>
 		<data>
 		YEO9ONHerUR4IOxaqjDJcvvYoas=
+		</data>
+		<key>flutter_assets/assets/common/2.0x/clear_button.png</key>
+		<data>
+		GtkdRJUJCmL8MxAnKTPTjzeMuDs=
 		</data>
 		<key>flutter_assets/assets/login/2.0x/btn_login_bg.png</key>
 		<data>
@@ -46,7 +50,7 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		avyNctyWyK1hFzFPgLOXfAFzsW4=
+		TP0H9f23VrDvc2fu0p8ylsAyyJ0=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -71,11 +75,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			2omXp3vvKT4/qSqbISUdhnZEhSo=
+			R8+Gxjr93JfgM9b9Bcg7OgayL0A=
 			</data>
 			<key>hash2</key>
 			<data>
-			/7bf7NOOMnsNdDyKWTJcXboRMcJNQArDgimHoJiBjRs=
+			QBPzNwSaUoLwgzNwRnUMbbqTZxn/UjE2Q+AJXTTFAIU=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -93,11 +97,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ibDKGEDGtQNerP2hF2yalWf1KBk=
+			M47U8RVXn1OtG5I+bJmApQgkR8Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			eFv2Gmc9rWT4fljuUigOzCiEtLfSuf+bm4E+jGWHrS0=
+			iM/T/VM9OLfiF298mPGibbG4c6b37PYBF0AuwW72vcI=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/common/2.0x/arrow_enter.png</key>
@@ -109,6 +113,17 @@
 			<key>hash2</key>
 			<data>
 			rvzYVJ432JZxL73vAqtMSedprMRiOtGsKy/JtdRos+E=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/common/2.0x/clear_button.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			GtkdRJUJCmL8MxAnKTPTjzeMuDs=
+			</data>
+			<key>hash2</key>
+			<data>
+			xyBp/9g4UwglOdKofDmZKE8Lj5GXZRqYQxVsDJ9Bx+o=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/login/2.0x/btn_login_bg.png</key>
@@ -170,11 +185,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			avyNctyWyK1hFzFPgLOXfAFzsW4=
+			TP0H9f23VrDvc2fu0p8ylsAyyJ0=
 			</data>
 			<key>hash2</key>
 			<data>
-			fGKZsufVKyfup5D9vn+XSwXeMiW4qud+8jFsPzKmIcU=
+			Ap1/3m0rBbDLLCiPgs7jYDxNwv0VSBBYbTNAjSQu/ac=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
