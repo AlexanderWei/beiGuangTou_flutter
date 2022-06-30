@@ -23,7 +23,10 @@ class MyTextField extends StatefulWidget {
   }) : super(key: key);
 
   double width;
+
   double height;
+  final double minHeight = 36.0; // 组件的最小高度，当设置的 height 小于这个高度时，使用这个高度
+
   EdgeInsets margin;
   EdgeInsets padding;
   Color bgColor;
@@ -46,9 +49,8 @@ class _MyTextFieldState extends State<MyTextField> {
   bool _showClearBtn = false; // 是否显示清除按钮
   // 清除输入的按钮
   Widget clearButton() {
-    return Positioned(
-      top: (widget.height - 10) / 2,
-      right: 5,
+    return Align(
+      alignment: Alignment(0.97, 0),
       child: InkWell(
         // 触发清除文本事件
         onTap: () {
@@ -58,8 +60,8 @@ class _MyTextFieldState extends State<MyTextField> {
         child: Visibility(
           visible: (widget.hasClearButton == true ? _showClearBtn : false),
           child: Container(
-            width: 10,
-            height: 10,
+            width: 25,
+            height: 25,
             child: Image.asset(
               AssetsPath.clear_button,
             ),
@@ -97,9 +99,12 @@ class _MyTextFieldState extends State<MyTextField> {
 
   @override
   Widget build(BuildContext context) {
+    double h =
+        (widget.height < widget.minHeight ? widget.minHeight : widget.height);
+
     return Container(
       width: widget.width,
-      height: widget.height,
+      height: h,
       margin: widget.margin,
       padding: widget.padding,
       clipBehavior: Clip.hardEdge,
@@ -108,34 +113,37 @@ class _MyTextFieldState extends State<MyTextField> {
         color: widget.bgColor,
       ),
       child: Stack(children: [
-        TextField(
-          controller: widget.controller,
-          keyboardType: widget.keyboardType,
+        Align(
+          alignment: Alignment(-1, 0),
+          child: TextField(
+            controller: widget.controller,
+            keyboardType: widget.keyboardType,
 
-          // 文本变动时
-          onChanged: (text) {
-            widget.controller.value = TextEditingValue(
-              text: text,
-              selection: TextSelection.fromPosition(
-                TextPosition(
-                  affinity: TextAffinity.downstream,
-                  offset: text.length,
+            // 文本变动时
+            onChanged: (text) {
+              widget.controller.value = TextEditingValue(
+                text: text,
+                selection: TextSelection.fromPosition(
+                  TextPosition(
+                    affinity: TextAffinity.downstream,
+                    offset: text.length,
+                  ),
                 ),
-              ),
-            );
-          },
+              );
+            },
 
-          decoration: InputDecoration(
-            hintText: widget.placeholder,
-            hintStyle: widget.placeholderStyle,
-            counterText: "",
-            enabledBorder:
-                UnderlineInputBorder(borderSide: widget.enabledBorder),
-            focusedBorder:
-                UnderlineInputBorder(borderSide: widget.focusedBorder),
+            decoration: InputDecoration(
+              hintText: widget.placeholder,
+              hintStyle: widget.placeholderStyle,
+              counterText: "",
+              enabledBorder:
+                  UnderlineInputBorder(borderSide: widget.enabledBorder),
+              focusedBorder:
+                  UnderlineInputBorder(borderSide: widget.focusedBorder),
+            ),
+
+            maxLength: widget.maxLength,
           ),
-
-          maxLength: widget.maxLength,
         ),
 
         // 清除按钮

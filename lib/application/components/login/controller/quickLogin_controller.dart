@@ -99,7 +99,7 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
           // 请输入手机号码
           _phoneTextField = MyTextField(
             margin: EdgeInsets.only(left: 28.sm),
-            padding: EdgeInsets.fromLTRB(16.sm, 0, 9.sm, 0),
+            padding: EdgeInsets.fromLTRB(16.sm, 0, 0, 0),
             width: 1.sw - 28.sm * 2,
             height: 45.sm,
             controller: _phoneController,
