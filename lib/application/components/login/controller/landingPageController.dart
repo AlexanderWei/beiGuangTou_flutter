@@ -114,9 +114,7 @@ Widget registerButton(BuildContext context) {
 /**理财师账号登录按钮 */
 Widget financialPlannerButton(BuildContext context) {
   return InkWell(
-    onTap: () {
-      print("👩来了。");
-    },
+    onTap: null,
     child: Container(
       color: Colors.transparent,
       width: 1.sw - 48 * 2.sm,
