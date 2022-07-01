@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../support_file/common_header.dart';
+
 class Helper {
   /** 把普通的颜色值转换成 MaterialColor */
   static MaterialColor createMaterialColor(Color color) {
@@ -20,5 +22,30 @@ class Helper {
       );
     });
     return MaterialColor(color.value, swatch as Map<int, Color>);
+  }
+
+  static KeyboardActionsConfig getKeyboardActionsConfig(
+      BuildContext context, List<FocusNode> list) {
+    return KeyboardActionsConfig(
+      keyboardActionsPlatform: KeyboardActionsPlatform.ALL,
+      keyboardBarColor: Colors.grey[200],
+      nextFocus: true,
+      actions: List.generate(
+        list.length,
+        (index) => KeyboardActionsItem(
+          focusNode: list[index],
+          toolbarButtons: [
+            (node) {
+              return GestureDetector(
+                onTap: () {
+                  node.unfocus();
+                },
+                child: Text("关闭"),
+              );
+            },
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -21,6 +21,7 @@ class MyTextField extends StatefulWidget {
     this.hasClearButton = true,
     this.maxLength,
     this.inputAction = TextInputAction.done,
+    this.focusNode,
   }) : super(key: key);
 
   double width;
@@ -42,6 +43,7 @@ class MyTextField extends StatefulWidget {
   bool hasClearButton; // 是否有清除按钮
   int? maxLength;
   TextInputAction inputAction;
+  final FocusNode? focusNode;
 
   @override
   State<MyTextField> createState() => _MyTextFieldState();
@@ -95,6 +97,7 @@ class _MyTextFieldState extends State<MyTextField> {
   void dispose() {
     // TODO: implement dispose
     widget.controller.dispose();
+    widget.focusNode?.dispose();
 
     super.dispose();
   }
@@ -120,6 +123,7 @@ class _MyTextFieldState extends State<MyTextField> {
           child: TextField(
             textInputAction: widget.inputAction,
             keyboardType: widget.keyboardType,
+            focusNode: widget.focusNode,
 
             controller: widget.controller,
             // 文本变动时

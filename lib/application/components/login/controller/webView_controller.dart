@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/application/support_file/common_header.dart';
 
-class WebViewController extends StatefulWidget {
-  WebViewController({
+class WebViewPage extends StatefulWidget {
+  WebViewPage({
     Key? key,
     required this.url,
     this.title = "",
@@ -14,10 +14,10 @@ class WebViewController extends StatefulWidget {
   bool isLocalUrl;
 
   @override
-  State<WebViewController> createState() => _WebViewControllerState();
+  State<WebViewPage> createState() => _WebViewPageState();
 }
 
-class _WebViewControllerState extends State<WebViewController> {
+class _WebViewPageState extends State<WebViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

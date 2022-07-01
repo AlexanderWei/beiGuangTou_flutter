@@ -26,6 +26,8 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
 
   Enum loginType;
 
+  FocusNode _phoneTxtNode = FocusNode();
+
   MyTextField? _phoneTextField;
   TextEditingController _phoneController = TextEditingController();
 
@@ -51,14 +53,44 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
   Widget body(BuildContext context, Enum loginType) {
     switch (loginType) {
       case QuickLoginType.quickLoginTypeByPhone:
-        return Stack(
-          children: [
-            phoneLoginUI(context),
+        return MyListView(
+            keyboardConfig:
+                Helper.getKeyboardActionsConfig(context, [_phoneTxtNode]),
+            children: [
+              // 标题
+              Container(
+                margin: EdgeInsets.only(left: 28.sm, top: 36.sm),
+                child: Text(
+                  "你好，\n欢迎来到北广投",
+                  style: TextStyle(
+                    fontSize: 26.sm,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
 
-            // 用户注册等相关协议
-            relatedAgreements(),
-          ],
-        );
+              SizedBox(height: 53.h),
+
+              // 请输入手机号码
+              _phoneTextField = MyTextField(
+                margin: EdgeInsets.only(left: 28.sm, right: 28.sm),
+                padding: EdgeInsets.fromLTRB(16.sm, 0, 0, 0),
+                width: 0,
+                height: 45.sm,
+                controller: _phoneController,
+                placeholder: '请输入手机号码',
+                keyboardType: TextInputType.number,
+                enabledBorder: BorderSide(color: Colors.transparent),
+                focusedBorder: BorderSide(color: Colors.transparent),
+                cornerRadius: 4.sm,
+                maxLength: 11,
+                focusNode: _phoneTxtNode,
+              ),
+
+              SizedBox(
+                height: 42.sm,
+              ),
+            ]);
 
         break;
 
@@ -176,7 +208,7 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
               onTap: () {
                 NavigatorUtil.pushTo(
                     context: context,
-                    function: WebViewController(
+                    function: WebViewPage(
                       url:
                           "https://www.beiguangtou.com/H5/agreement/index.html",
                       title: "用户注册等相关协议",
