@@ -20,7 +20,14 @@ class _WebViewControllerState extends State<WebViewController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.purpleAccent,
+      appBar: AppBar(
+        title: Text(
+          widget.title,
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+      ),
     );
   }
 }

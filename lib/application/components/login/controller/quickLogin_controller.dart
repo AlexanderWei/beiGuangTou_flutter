@@ -177,8 +177,10 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
                 NavigatorUtil.pushTo(
                     context: context,
                     function: WebViewController(
-                        url:
-                            "https://www.beiguangtou.com/H5/agreement/index.html"));
+                      url:
+                          "https://www.beiguangtou.com/H5/agreement/index.html",
+                      title: "用户注册等相关协议",
+                    ));
               },
               child: Text(
                 "《用户注册等相关协议》",
@@ -198,8 +200,6 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
         leading: IconButton(
           icon: Image.asset(AssetsPath.login_bar_back_icon),
           onPressed: () {
