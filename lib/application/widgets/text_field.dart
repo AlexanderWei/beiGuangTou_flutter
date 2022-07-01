@@ -20,6 +20,7 @@ class MyTextField extends StatefulWidget {
     this.keyboardType = TextInputType.text,
     this.hasClearButton = true,
     this.maxLength,
+    this.inputAction = TextInputAction.done,
   }) : super(key: key);
 
   double width;
@@ -40,6 +41,7 @@ class MyTextField extends StatefulWidget {
   TextEditingController controller;
   bool hasClearButton; // 是否有清除按钮
   int? maxLength;
+  TextInputAction inputAction;
 
   @override
   State<MyTextField> createState() => _MyTextFieldState();
@@ -116,9 +118,10 @@ class _MyTextFieldState extends State<MyTextField> {
         Align(
           alignment: Alignment(-1, 0),
           child: TextField(
-            controller: widget.controller,
+            textInputAction: widget.inputAction,
             keyboardType: widget.keyboardType,
 
+            controller: widget.controller,
             // 文本变动时
             onChanged: (text) {
               widget.controller.value = TextEditingValue(

@@ -104,7 +104,7 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
             height: 45.sm,
             controller: _phoneController,
             placeholder: '请输入手机号码',
-            keyboardType: TextInputType.phone,
+            keyboardType: TextInputType.number,
             enabledBorder: BorderSide(color: Colors.transparent),
             focusedBorder: BorderSide(color: Colors.transparent),
             cornerRadius: 4.sm,
