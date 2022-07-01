@@ -200,6 +200,7 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         leading: IconButton(
           icon: Image.asset(AssetsPath.login_bar_back_icon),
           onPressed: () {

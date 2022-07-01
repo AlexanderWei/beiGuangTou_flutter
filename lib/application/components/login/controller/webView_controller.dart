@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/application/support_file/common_header.dart';
 
 class WebViewController extends StatefulWidget {
   WebViewController({
@@ -21,6 +22,13 @@ class _WebViewControllerState extends State<WebViewController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Image.asset(AssetsPath.appBar_back),
+          onPressed: () {
+            NavigatorUtil.pop(context: context);
+          },
+        ),
+        elevation: 0,
         title: Text(
           widget.title,
           style: TextStyle(
