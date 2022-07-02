@@ -40,7 +40,10 @@ class Helper {
                 onTap: () {
                   node.unfocus();
                 },
-                child: Text("关闭"),
+                child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Icon(Icons.close),
+              ),
               );
             },
           ],
