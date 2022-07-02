@@ -127,21 +127,7 @@ class _MyTextFieldState extends State<MyTextField> {
             keyboardType: widget.keyboardType,
             focusNode: widget.focusNode,
             autofocus: widget.autofocus,
-
             controller: widget.controller,
-            // 文本变动时
-            onChanged: (text) {
-              widget.controller.value = TextEditingValue(
-                text: text,
-                selection: TextSelection.fromPosition(
-                  TextPosition(
-                    affinity: TextAffinity.downstream,
-                    offset: text.length,
-                  ),
-                ),
-              );
-            },
-
             decoration: InputDecoration(
               hintText: widget.placeholder,
               hintStyle: widget.placeholderStyle,
