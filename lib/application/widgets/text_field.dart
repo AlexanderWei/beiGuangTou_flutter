@@ -22,6 +22,7 @@ class MyTextField extends StatefulWidget {
     this.maxLength,
     this.inputAction = TextInputAction.done,
     this.focusNode,
+    this.autofocus = false,
   }) : super(key: key);
 
   double width;
@@ -44,6 +45,7 @@ class MyTextField extends StatefulWidget {
   int? maxLength;
   TextInputAction inputAction;
   final FocusNode? focusNode;
+  bool autofocus;
 
   @override
   State<MyTextField> createState() => _MyTextFieldState();
@@ -124,6 +126,7 @@ class _MyTextFieldState extends State<MyTextField> {
             textInputAction: widget.inputAction,
             keyboardType: widget.keyboardType,
             focusNode: widget.focusNode,
+            autofocus: widget.autofocus,
 
             controller: widget.controller,
             // 文本变动时

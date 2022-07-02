@@ -54,81 +54,85 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
     switch (loginType) {
       case QuickLoginType.quickLoginTypeByPhone:
         return MyListView(
-            isScrollable: false,
-            keyboardConfig:
-                Helper.getKeyboardActionsConfig(context, [_phoneTxtNode]),
-            children: [
-              // 标题
-              Container(
-                margin: EdgeInsets.only(left: 28.sm, top: 36.sm),
+          isScrollable: false,
+          keyboardConfig:
+              Helper.getKeyboardActionsConfig(context, [_phoneTxtNode]),
+          children: [
+            // 标题
+            Container(
+              margin: EdgeInsets.only(left: 28.sm, top: 36.sm),
+              child: Text(
+                "你好，\n欢迎来到北广投",
+                style: TextStyle(
+                  fontSize: 26.sm,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+
+            SizedBox(height: 53.h),
+
+            // 请输入手机号码
+            _phoneTextField = MyTextField(
+              margin: EdgeInsets.only(left: 28.sm, right: 28.sm),
+              padding: EdgeInsets.fromLTRB(16.sm, 0, 0, 0),
+              width: 0,
+              height: 45.sm,
+              controller: _phoneController,
+              placeholder: '请输入手机号码',
+              keyboardType: TextInputType.number,
+              enabledBorder: BorderSide(color: Colors.transparent),
+              focusedBorder: BorderSide(color: Colors.transparent),
+              cornerRadius: 4.sm,
+              maxLength: 11,
+              focusNode: _phoneTxtNode,
+            ),
+
+            SizedBox(
+              height: 42.sm,
+            ),
+
+            // 下一步按钮
+            _nextStepBtn = MyTextButton(
+              onPressed: (_isNextEnable
+                  ? () {
+                      print("👩下一步");
+                    }
+                  : null),
+              width: 1.sw - 2 * 28.sm,
+              height: 45.sm,
+              margin: EdgeInsets.only(left: 28.sm),
+              text: "下一步",
+              cornerRadius: 4.sm,
+              bgColor: (_isNextEnable
+                  ? AppConstant.themeYellow
+                  : AppConstant.btnDisableColor),
+            ),
+
+            SizedBox(
+              height: 20.sm,
+            ),
+
+            // 密码登录按钮
+            Container(
+              margin: EdgeInsets.only(left: 28.sm),
+              child: GestureDetector(
+                onTap: () {},
                 child: Text(
-                  "你好，\n欢迎来到北广投",
+                  "密码登录",
                   style: TextStyle(
-                    fontSize: 26.sm,
-                    fontWeight: FontWeight.bold,
-                  ),
+                      fontSize: 14.sm, color: AppConstant.themeYellow),
                 ),
               ),
+            ),
 
-              SizedBox(height: 53.h),
+            SizedBox(
+              height: 260.h,
+            ),
 
-              // 请输入手机号码
-              _phoneTextField = MyTextField(
-                margin: EdgeInsets.only(left: 28.sm, right: 28.sm),
-                padding: EdgeInsets.fromLTRB(16.sm, 0, 0, 0),
-                width: 0,
-                height: 45.sm,
-                controller: _phoneController,
-                placeholder: '请输入手机号码',
-                keyboardType: TextInputType.number,
-                enabledBorder: BorderSide(color: Colors.transparent),
-                focusedBorder: BorderSide(color: Colors.transparent),
-                cornerRadius: 4.sm,
-                maxLength: 11,
-                focusNode: _phoneTxtNode,
-              ),
-
-              SizedBox(
-                height: 42.sm,
-              ),
-
-              // 下一步按钮
-              _nextStepBtn = MyTextButton(
-                onPressed: (_isNextEnable
-                    ? () {
-                        print("👩下一步");
-                      }
-                    : null),
-                width: 1.sw - 2 * 28.sm,
-                height: 45.sm,
-                margin: EdgeInsets.only(left: 28.sm),
-                text: "下一步",
-                cornerRadius: 4.sm,
-                bgColor: (_isNextEnable
-                    ? AppConstant.themeYellow
-                    : AppConstant.btnDisableColor),
-              ),
-
-              SizedBox(
-                height: 20.sm,
-              ),
-
-              // 密码登录按钮
-              Container(
-                margin: EdgeInsets.only(left: 28.sm),
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Text(
-                    "密码登录",
-                    style: TextStyle(
-                        fontSize: 14.sm, color: AppConstant.themeYellow),
-                  ),
-                ),
-              ),
-
-              // 用户注册等相关协议
-              relatedAgreements(),
-            ]);
+            relatedAgreements(),
+          ],
+        );
 
         break;
 
@@ -164,47 +168,40 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
     );
   }
 
-  /** 用户注册等相关协议 */
+/** 用户注册等相关协议 */
   Widget relatedAgreements() {
-    return Expanded(
-      flex: 1,
-      // color: Colors.green,
-      child: Container(
-        // margin: EdgeInsets.only(bottom: 79.h),
-        color: Colors.purple,
-        // width: 1.sw,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "登录即已同意",
+    return Container(
+      color: Colors.purpleAccent,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            "登录即已同意",
+            style: TextStyle(
+              fontSize: 12.sm,
+              color: AppConstant.textGrayColor,
+            ),
+          ),
+
+          // 可点击部分
+          GestureDetector(
+            onTap: () {
+              NavigatorUtil.pushTo(
+                  context: context,
+                  function: WebViewPage(
+                    url: "https://www.beiguangtou.com/H5/agreement/index.html",
+                    title: "用户注册等相关协议",
+                  ));
+            },
+            child: Text(
+              "《用户注册等相关协议》",
               style: TextStyle(
                 fontSize: 12.sm,
-                color: AppConstant.textGrayColor,
+                color: AppConstant.themeYellow,
               ),
             ),
-
-            // 可点击部分
-            GestureDetector(
-              onTap: () {
-                NavigatorUtil.pushTo(
-                    context: context,
-                    function: WebViewPage(
-                      url:
-                          "https://www.beiguangtou.com/H5/agreement/index.html",
-                      title: "用户注册等相关协议",
-                    ));
-              },
-              child: Text(
-                "《用户注册等相关协议》",
-                style: TextStyle(
-                  fontSize: 12.sm,
-                  color: AppConstant.themeYellow,
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

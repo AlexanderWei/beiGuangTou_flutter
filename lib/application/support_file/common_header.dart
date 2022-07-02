@@ -3,7 +3,7 @@ library common_header;
 export 'package:flutter/cupertino.dart';
 
 export 'package:provider/provider.dart';
-export 'package:flutter_screenutil/flutter_screenutil.dart';
+export '../util/flutter_screenutil/flutter_screenutil.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:webview_flutter/webview_flutter.dart';
 export '../third_party/keyboard_actions/keyboard_actions.dart';
