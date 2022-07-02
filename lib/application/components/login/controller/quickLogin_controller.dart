@@ -80,12 +80,13 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
               height: 45.sm,
               controller: _phoneController,
               placeholder: '请输入手机号码',
-              keyboardType: TextInputType.number,
+              keyboardType: TextInputType.text,
               enabledBorder: BorderSide(color: Colors.transparent),
               focusedBorder: BorderSide(color: Colors.transparent),
               cornerRadius: 4.sm,
               maxLength: 11,
               focusNode: _phoneTxtNode,
+              autofocus: true,
             ),
 
             SizedBox(
@@ -127,9 +128,10 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
             ),
 
             SizedBox(
-              height: 260.h,
+              height: 250.h,
             ),
 
+            // 用户注册等相关协议
             relatedAgreements(),
           ],
         );
@@ -171,7 +173,6 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
 /** 用户注册等相关协议 */
   Widget relatedAgreements() {
     return Container(
-      color: Colors.purpleAccent,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
