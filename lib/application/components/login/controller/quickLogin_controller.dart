@@ -54,6 +54,7 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
     switch (loginType) {
       case QuickLoginType.quickLoginTypeByPhone:
         return MyListView(
+            isScrollable: false,
             keyboardConfig:
                 Helper.getKeyboardActionsConfig(context, [_phoneTxtNode]),
             children: [
@@ -90,6 +91,43 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
               SizedBox(
                 height: 42.sm,
               ),
+
+              // 下一步按钮
+              _nextStepBtn = MyTextButton(
+                onPressed: (_isNextEnable
+                    ? () {
+                        print("👩下一步");
+                      }
+                    : null),
+                width: 1.sw - 2 * 28.sm,
+                height: 45.sm,
+                margin: EdgeInsets.only(left: 28.sm),
+                text: "下一步",
+                cornerRadius: 4.sm,
+                bgColor: (_isNextEnable
+                    ? AppConstant.themeYellow
+                    : AppConstant.btnDisableColor),
+              ),
+
+              SizedBox(
+                height: 20.sm,
+              ),
+
+              // 密码登录按钮
+              Container(
+                margin: EdgeInsets.only(left: 28.sm),
+                child: GestureDetector(
+                  onTap: () {},
+                  child: Text(
+                    "密码登录",
+                    style: TextStyle(
+                        fontSize: 14.sm, color: AppConstant.themeYellow),
+                  ),
+                ),
+              ),
+
+              // 用户注册等相关协议
+              relatedAgreements(),
             ]);
 
         break;
@@ -110,88 +148,31 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
     );
   }
 
-  /** 手机号码登录的UI */
-  Widget phoneLoginUI(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Container(
-            margin: EdgeInsets.only(left: 28.sm, top: 36.sm),
-            child: Text(
-              "你好，\n欢迎来到北广投",
-              style: TextStyle(
-                fontSize: 26.sm,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-
-          SizedBox(height: 53.h),
-
-          // 请输入手机号码
-          _phoneTextField = MyTextField(
-            margin: EdgeInsets.only(left: 28.sm),
-            padding: EdgeInsets.fromLTRB(16.sm, 0, 0, 0),
-            width: 1.sw - 28.sm * 2,
-            height: 45.sm,
-            controller: _phoneController,
-            placeholder: '请输入手机号码',
-            keyboardType: TextInputType.number,
-            enabledBorder: BorderSide(color: Colors.transparent),
-            focusedBorder: BorderSide(color: Colors.transparent),
-            cornerRadius: 4.sm,
-            maxLength: 11,
-          ),
-
-          SizedBox(
-            height: 42.sm,
-          ),
-
-          // 下一步按钮
-          _nextStepBtn = MyTextButton(
-            onPressed: (_isNextEnable
-                ? () {
-                    print("👩下一步");
-                  }
-                : null),
-            width: 1.sw - 28.sm * 2,
-            height: 45.sm,
-            margin: EdgeInsets.only(left: 28.sm),
-            text: "下一步",
-            cornerRadius: 4.sm,
-            bgColor: (_isNextEnable
-                ? AppConstant.themeYellow
-                : AppConstant.btnDisableColor),
-          ),
-
-          SizedBox(
-            height: 20.sm,
-          ),
-
-          // 密码登录按钮
-          Container(
-            margin: EdgeInsets.only(left: 28.sm),
-            child: GestureDetector(
-              onTap: () {},
-              child: Text(
-                "密码登录",
-                style:
-                    TextStyle(fontSize: 14.sm, color: AppConstant.themeYellow),
-              ),
-            ),
-          ),
-        ],
-        crossAxisAlignment: CrossAxisAlignment.start,
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        leading: IconButton(
+          icon: Image.asset(AssetsPath.login_bar_back_icon),
+          onPressed: () {
+            NavigatorUtil.pop(context: context);
+          },
+        ),
       ),
+      body: body(context, loginType),
     );
   }
 
   /** 用户注册等相关协议 */
   Widget relatedAgreements() {
-    return Positioned(
-      bottom: 79.h,
+    return Expanded(
+      flex: 1,
+      // color: Colors.green,
       child: Container(
-        width: 1.sw,
+        // margin: EdgeInsets.only(bottom: 79.h),
+        color: Colors.purple,
+        // width: 1.sw,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -225,22 +206,6 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
           ],
         ),
       ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        leading: IconButton(
-          icon: Image.asset(AssetsPath.login_bar_back_icon),
-          onPressed: () {
-            NavigatorUtil.pop(context: context);
-          },
-        ),
-      ),
-      body: body(context, loginType),
     );
   }
 }
