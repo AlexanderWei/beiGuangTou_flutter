@@ -24,6 +24,9 @@ class Helper {
     return MaterialColor(color.value, swatch as Map<int, Color>);
   }
 
+  /** ⌨️ 键盘设置 START */
+
+  // KeyboardActionsConfig
   static KeyboardActionsConfig getKeyboardActionsConfig(
       BuildContext context, List<FocusNode> list) {
     return KeyboardActionsConfig(
@@ -41,9 +44,9 @@ class Helper {
                   node.unfocus();
                 },
                 child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Icon(Icons.close),
-              ),
+                  padding: EdgeInsets.all(8.0),
+                  child: Icon(Icons.close),
+                ),
               );
             },
           ],
@@ -51,4 +54,51 @@ class Helper {
       ),
     );
   }
+
+  // KeyboardActionsItem
+  static keyboardItem(
+      {required FocusNode focusNode,
+      String inputType = "",
+      required VoidCallback onTap}) {
+    if (inputType == "search") {
+      return KeyboardActionsItem(
+        focusNode: focusNode,
+        toolbarButtons: [
+          (node) {
+            return GestureDetector(
+              onTap: onTap,
+              child: Container(
+                color: Colors.black,
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  "搜索",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            );
+          },
+        ],
+      );
+    }
+
+    return KeyboardActionsItem(
+      focusNode: focusNode,
+      toolbarButtons: [
+        (node) {
+          return GestureDetector(
+            onTap: onTap,
+            child: Container(
+              color: Colors.black,
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                "DONE",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          );
+        },
+      ],
+    );
+  }
+  /** ⌨️ 键盘设置 END */
 }
