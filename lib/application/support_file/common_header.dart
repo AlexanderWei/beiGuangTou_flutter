@@ -11,6 +11,7 @@ export '../util/flutter_screenutil/flutter_screenutil.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export '../third_party/keyboard_actions/keyboard_actions.dart';
 export '../third_party/flutter_easyrefresh/easy_refresh.dart';
+export '../third_party/flutter_toast/fluttertoast.dart';
 
 export '../widgets/text_button.dart';
 export '../widgets/text_field.dart';
