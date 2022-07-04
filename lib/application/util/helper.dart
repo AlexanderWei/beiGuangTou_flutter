@@ -24,81 +24,14 @@ class Helper {
     return MaterialColor(color.value, swatch as Map<int, Color>);
   }
 
-  /** ⌨️ 键盘设置 START */
-
-  // KeyboardActionsConfig
+  /** KeyboardActionsConfig */
   static KeyboardActionsConfig getKeyboardActionsConfig(
-      BuildContext context, List<FocusNode> list) {
+      BuildContext context, List<KeyboardActionsItem>? actions) {
     return KeyboardActionsConfig(
       keyboardActionsPlatform: KeyboardActionsPlatform.ALL,
       keyboardBarColor: Colors.grey[200],
       nextFocus: true,
-      actions: List.generate(
-        list.length,
-        (index) => KeyboardActionsItem(
-          focusNode: list[index],
-          toolbarButtons: [
-            (node) {
-              return GestureDetector(
-                onTap: () {
-                  node.unfocus();
-                },
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(Icons.close),
-                ),
-              );
-            },
-          ],
-        ),
-      ),
+      actions: actions,
     );
   }
-
-  // KeyboardActionsItem
-  static keyboardItem(
-      {required FocusNode focusNode,
-      String inputType = "",
-      required VoidCallback onTap}) {
-    if (inputType == "search") {
-      return KeyboardActionsItem(
-        focusNode: focusNode,
-        toolbarButtons: [
-          (node) {
-            return GestureDetector(
-              onTap: onTap,
-              child: Container(
-                color: Colors.black,
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  "搜索",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            );
-          },
-        ],
-      );
-    }
-
-    return KeyboardActionsItem(
-      focusNode: focusNode,
-      toolbarButtons: [
-        (node) {
-          return GestureDetector(
-            onTap: onTap,
-            child: Container(
-              color: Colors.black,
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                "DONE",
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          );
-        },
-      ],
-    );
-  }
-  /** ⌨️ 键盘设置 END */
 }

@@ -55,8 +55,14 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
       case QuickLoginType.quickLoginTypeByPhone:
         return MyListView(
           isScrollable: false,
-          keyboardConfig:
-              Helper.getKeyboardActionsConfig(context, [_phoneTxtNode]),
+          keyboardConfig: Helper.getKeyboardActionsConfig(context, [
+            KeyboardItem(
+              focusNode: _phoneTxtNode,
+              onTap: () {
+                print("👩手机号=${_phoneController.text}");
+              },
+            ).getItem(),
+          ]),
           children: [
             // 标题
             Container(

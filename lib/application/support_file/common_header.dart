@@ -12,6 +12,7 @@ export '../third_party/flutter_easyrefresh/easy_refresh.dart';
 export '../widgets/text_button.dart';
 export '../widgets/text_field.dart';
 export '../widgets/list_view.dart';
+export '../widgets/keyboard_item.dart';
 
 export '../util/common_utils/common_utils.dart';
 export '../util/flustars/sp_util.dart';
