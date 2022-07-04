@@ -1,6 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application/application/components/login/controller/webView_controller.dart';
 import 'package:flutter_application/application/support_file/common_header.dart';
 
 enum QuickLoginType {
