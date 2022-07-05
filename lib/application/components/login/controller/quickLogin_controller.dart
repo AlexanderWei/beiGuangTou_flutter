@@ -54,14 +54,15 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
       case QuickLoginType.quickLoginTypeByPhone:
         return MyListView(
           isScrollable: false,
-          keyboardConfig: Helper.getKeyboardActionsConfig(context, [
-            KeyboardItem(
-              focusNode: _phoneTxtNode,
-              onTap: () {
-                print("👩手机号=${_phoneController.text}");
-              },
-            ).getItem(),
-          ]),
+          keyboardConfig: Helper.getKeyboardActionsConfig(
+              context,
+              [
+                KeyboardItem(
+                  focusNode: _phoneTxtNode,
+                  onTap: () {},
+                ).getItem(),
+              ],
+              nextFocus: false),
           children: [
             // 标题
             Container(
@@ -100,9 +101,9 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
 
             // 下一步按钮
             _nextStepBtn = MyTextButton(
-              onPressed: (_isNextEnable
+              onPressed: (_isNextEnable == true
                   ? () {
-                      print("👩下一步");
+                      checkPhoneNumber(_phoneController.text);
                     }
                   : null),
               width: 1.sw - 2 * 28.sm,
@@ -211,4 +212,16 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
       ),
     );
   }
+}
+
+/** 检查用户手机号状态 */
+checkPhoneNumber(String phoneNum) {
+  LoginService.checkMobileStatus(
+      parameter: {"mobile": phoneNum},
+      success: (resp) {
+        print("👩石榴慧${resp}");
+      },
+      error: (err) {
+        print("🙅${err}");
+      });
 }

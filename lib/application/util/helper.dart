@@ -26,11 +26,12 @@ class Helper {
 
   /** KeyboardActionsConfig */
   static KeyboardActionsConfig getKeyboardActionsConfig(
-      BuildContext context, List<KeyboardActionsItem>? actions) {
+      BuildContext context, List<KeyboardActionsItem>? actions,
+      {bool nextFocus = true}) {
     return KeyboardActionsConfig(
       keyboardActionsPlatform: KeyboardActionsPlatform.ALL,
       keyboardBarColor: Colors.grey[200],
-      nextFocus: true,
+      nextFocus: nextFocus,
       actions: actions,
     );
   }

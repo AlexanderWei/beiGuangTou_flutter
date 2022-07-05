@@ -5,6 +5,7 @@ export 'package:flutter/cupertino.dart';
 export 'dart:async';
 export 'dart:io';
 
+export 'package:dio/dio.dart';
 export 'package:provider/provider.dart';
 export 'package:webview_flutter/webview_flutter.dart';
 export '../util/flutter_screenutil/flutter_screenutil.dart';
@@ -23,8 +24,11 @@ export '../util/common_utils/common_utils.dart';
 export '../util/flustars/sp_util.dart';
 export '../util/navigator_util.dart';
 export '../util/helper.dart';
+export '../util/network_request.dart';
 
 export 'app_constant.dart';
 export 'assets_path.dart';
 
 export '../components/base/webView_page.dart';
+
+export '../service/login_service.dart';
