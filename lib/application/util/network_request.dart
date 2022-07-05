@@ -4,7 +4,7 @@ import 'package:flutter_application/application/support_file/common_header.dart'
 class NetworkRequest {
   static requestHttp({
     required String urlStr,
-    required Map parameter,
+    required Map<String, dynamic> parameter,
     Map<String, dynamic>? headers,
     required String method,
     required success(Response response),
@@ -22,11 +22,10 @@ class NetworkRequest {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool isLogined = prefs.getBool("isLogined") ?? false;
     if (isLogined == true) {
-      token = tempUrl + timeStr + key + "";
+      token = tempUrl + timeStr + key + "userID";
     } else {
       token = tempUrl + timeStr + key;
     }
-    print("👩㊗️🐷${token}");
     token = EncryptUtil.encodeMd5(token);
     parameter["token"] = token;
 
@@ -43,10 +42,11 @@ class NetworkRequest {
     }
     dio.options.headers = headers;
 
+    var formData = FormData.fromMap(parameter);
     if (method == "get") {
     } else if (method == "post") {
       try {
-        Response response = await dio.post(urlStr, data: parameter);
+        Response response = await dio.post(urlStr, data: formData);
         return success(response);
       } catch (e) {
         DioError? err = e as DioError;

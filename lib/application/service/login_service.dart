@@ -3,7 +3,7 @@ import '../support_file/common_header.dart';
 class LoginService {
   /** 判断用户手机号状态 */
   static checkMobileStatus({
-    required Map parameter,
+    required Map<String, dynamic> parameter,
     required success(Response response),
     required error(DioError? error),
   }) {
