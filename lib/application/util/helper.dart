@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../support_file/common_header.dart';
 
 class Helper {
@@ -24,7 +23,6 @@ class Helper {
     return MaterialColor(color.value, swatch as Map<int, Color>);
   }
 
-  /** KeyboardActionsConfig */
   static KeyboardActionsConfig getKeyboardActionsConfig(
       BuildContext context, List<KeyboardActionsItem>? actions,
       {bool nextFocus = true}) {
@@ -33,6 +31,19 @@ class Helper {
       keyboardBarColor: Colors.grey[200],
       nextFocus: nextFocus,
       actions: actions,
+    );
+  }
+
+  static showToast({
+    required msg,
+    ToastGravity gravity = ToastGravity.CENTER,
+    int showTime = 2,
+  }) {
+    Fluttertoast.showToast(
+      msg: msg,
+      gravity: gravity,
+      toastLength: Toast.LENGTH_LONG,
+      timeInSecForIosWeb: showTime,
     );
   }
 }

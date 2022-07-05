@@ -1,13 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_application/application/support_file/common_header.dart';
 
-class NetworkRequest {
+class NetworkUtil {
   static requestHttp({
     required String urlStr,
     required Map<String, dynamic> parameter,
     Map<String, dynamic>? headers,
-    required String method,
-    required success(Response response),
+    required String method, // 传post或get
+    required success(dynamic response),
     required error(DioError? error),
   }) async {
     var dio = Dio();
@@ -47,7 +47,7 @@ class NetworkRequest {
     } else if (method == "post") {
       try {
         Response response = await dio.post(urlStr, data: formData);
-        return success(response);
+        return success(response.data);
       } catch (e) {
         DioError? err = e as DioError;
         error(err);

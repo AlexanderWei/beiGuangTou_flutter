@@ -219,7 +219,12 @@ checkPhoneNumber(String phoneNum) {
   LoginService.checkMobileStatus(
       parameter: {"mobile": phoneNum},
       success: (resp) {
-        print("👩石榴慧${resp}");
+        print("👩${resp}");
+        if ("${resp["Status"]}" == "1") {
+          Helper.showToast(msg: "该手机号码未注册，请前往注册！");
+        } else if ("${resp["Status"]}" == "3") {
+          Helper.showToast(msg: "您已是理财师，请前往理财师登录！");
+        }
       },
       error: (err) {
         print("🙅${err}");

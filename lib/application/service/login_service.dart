@@ -4,10 +4,10 @@ class LoginService {
   /** 判断用户手机号状态 */
   static checkMobileStatus({
     required Map<String, dynamic> parameter,
-    required success(Response response),
+    required success(dynamic response),
     required error(DioError? error),
   }) {
-    NetworkRequest.requestHttp(
+    NetworkUtil.requestHttp(
         urlStr: AppConstant.baseUrl + "Wx/checkmobilestatus",
         parameter: parameter,
         method: "post",

@@ -63,6 +63,9 @@ dependencies:
   # https://pub.flutter-io.cn/packages/webview_flutter/versions
   webview_flutter: ^3.0.4
 
+  # https://pub.flutter-io.cn/packages/fluttertoast
+  fluttertoast: ^8.0.9
+
   
 
 dev_dependencies:
