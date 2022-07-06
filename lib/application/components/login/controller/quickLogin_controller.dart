@@ -111,9 +111,7 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
               margin: EdgeInsets.only(left: 28.sm),
               text: "下一步",
               cornerRadius: 4.sm,
-              bgColor: (_isNextEnable
-                  ? AppConstant.themeYellow
-                  : AppConstant.btnDisableColor),
+              bgColor: (_isNextEnable ? Theme_Yellow : kBtnDisableColor),
             ),
 
             SizedBox(
@@ -127,8 +125,7 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
                 onTap: () {},
                 child: Text(
                   "密码登录",
-                  style: TextStyle(
-                      fontSize: 14.sm, color: AppConstant.themeYellow),
+                  style: TextStyle(fontSize: 14.sm, color: Theme_Yellow),
                 ),
               ),
             ),
@@ -186,7 +183,7 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
             "登录即已同意",
             style: TextStyle(
               fontSize: 12.sm,
-              color: AppConstant.textGrayColor,
+              color: kTextGrayColor,
             ),
           ),
 
@@ -204,7 +201,7 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
               "《用户注册等相关协议》",
               style: TextStyle(
                 fontSize: 12.sm,
-                color: AppConstant.themeYellow,
+                color: Theme_Yellow,
               ),
             ),
           ),
@@ -222,7 +219,7 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
         success: (resp) {
           Helper.cancelHUD(context: context);
 
-          fLog("👩${resp}", StackTrace.current);
+          fLog("👩${resp}", kTrace);
           if ("${resp["Status"]}" == "1") {
             Helper.showToast(msg: "该手机号码未注册，请前往注册！");
           } else if ("${resp["Status"]}" == "3") {

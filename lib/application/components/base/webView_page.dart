@@ -22,7 +22,7 @@ class _WebViewPageState extends State<WebViewPage> {
       Completer<WebViewController>();
 
   LinearProgress _progressIndicator = LinearProgress(
-    valueColor: AppConstant.themeYellow,
+    valueColor: Theme_Yellow,
     minHeight: 1.5,
   );
 

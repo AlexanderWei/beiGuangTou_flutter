@@ -8,7 +8,7 @@ class LoginService {
     required error(DioError? error),
   }) {
     NetworkUtil.requestHttp(
-        urlStr: AppConstant.baseUrl + "Wx/checkmobilestatus",
+        urlStr: Base_Url + "Wx/checkmobilestatus",
         parameter: parameter,
         method: "post",
         success: success,

@@ -1,10 +1,10 @@
-import 'package:flutter_application/application/support_file/common_header.dart';
+import 'package:flutter/material.dart';
 
-class AppConstant {
-  static String baseUrl = "https://www.beiguangtou.com/api1/";
+const String Base_Url = "https://www.beiguangtou.com/api1/";
 
-  /** 颜色 */
-  static Color themeYellow = Color(0xffCAA26F);
-  static Color btnDisableColor = Color.fromRGBO(223, 223, 223, 1);
-  static Color textGrayColor = Color(0xff979797);
-}
+final StackTrace kTrace = StackTrace.current;
+
+/** 颜色 */
+const Color Theme_Yellow = Color(0xffCAA26F);
+const Color kBtnDisableColor = Color.fromRGBO(223, 223, 223, 1);
+const Color kTextGrayColor = Color(0xff979797);

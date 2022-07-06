@@ -103,12 +103,12 @@ Widget quickLoginButton(BuildContext context) {
 Widget registerButton(BuildContext context) {
   return MyTextButton(
       onPressed: null,
-      textColor: AppConstant.themeYellow,
+      textColor: Theme_Yellow,
       bgColor: Colors.white,
       cornerRadius: 8.sm,
       width: 1.sw - 48 * 2.sm,
       height: 46.sm,
-      borderColor: AppConstant.themeYellow,
+      borderColor: Theme_Yellow,
       borderWidth: 1.sm,
       text: "新用户注册");
 }

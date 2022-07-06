@@ -16,7 +16,7 @@ class NetworkUtil {
 
     /** 获取token */
     String token;
-    String tempUrl = urlStr.replaceRange(0, AppConstant.baseUrl.length, "");
+    String tempUrl = urlStr.replaceRange(0, Base_Url.length, "");
     String timeStr = "${DateUtil.getNowDateMs()}";
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
