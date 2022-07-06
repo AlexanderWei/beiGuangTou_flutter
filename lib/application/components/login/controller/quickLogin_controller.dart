@@ -212,21 +212,25 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
       ),
     );
   }
-}
 
-/** 检查用户手机号状态 */
-checkPhoneNumber(String phoneNum) {
-  LoginService.checkMobileStatus(
-      parameter: {"mobile": phoneNum},
-      success: (resp) {
-        print("👩${resp}");
-        if ("${resp["Status"]}" == "1") {
-          Helper.showToast(msg: "该手机号码未注册，请前往注册！");
-        } else if ("${resp["Status"]}" == "3") {
-          Helper.showToast(msg: "您已是理财师，请前往理财师登录！");
-        }
-      },
-      error: (err) {
-        print("🙅${err}");
-      });
+  /** 检查用户手机号状态 */
+  checkPhoneNumber(String phoneNum) {
+    Helper.loadingHUD(context: context);
+
+    LoginService.checkMobileStatus(
+        parameter: {"mobile": phoneNum},
+        success: (resp) {
+          Helper.cancelHUD(context: context);
+
+          print("👩${resp}");
+          if ("${resp["Status"]}" == "1") {
+            Helper.showToast(msg: "该手机号码未注册，请前往注册！");
+          } else if ("${resp["Status"]}" == "3") {
+            Helper.showToast(msg: "您已是理财师，请前往理财师登录！");
+          }
+        },
+        error: (err) {
+          print("🙅${err}");
+        });
+  }
 }

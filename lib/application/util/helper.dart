@@ -46,4 +46,25 @@ class Helper {
       timeInSecForIosWeb: showTime,
     );
   }
+
+  static loadingHUD({required BuildContext context}) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Container(
+          color: Colors.transparent,
+          child: Center(
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation(Colors.black),
+            ),
+          ),
+        );
+      },
+      barrierColor: Colors.transparent,
+    );
+  }
+
+  static cancelHUD({required BuildContext context}) {
+    Navigator.pop(context);
+  }
 }
