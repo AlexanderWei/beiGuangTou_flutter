@@ -222,7 +222,7 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
         success: (resp) {
           Helper.cancelHUD(context: context);
 
-          print("👩${resp}");
+          fLog("👩${resp}", StackTrace.current);
           if ("${resp["Status"]}" == "1") {
             Helper.showToast(msg: "该手机号码未注册，请前往注册！");
           } else if ("${resp["Status"]}" == "3") {

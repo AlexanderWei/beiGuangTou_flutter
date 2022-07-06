@@ -1,64 +1,39 @@
-import 'dart:developer';
+import 'package:flutter/foundation.dart';
 
-/**
- * @Author: Sky24n
- * @GitHub: https://github.com/Sky24n
- * @Description: Log Util.
- * @Date: 2018/9/29
- */
-
-/// Log Util.
 class LogUtil {
-  static const String _defTag = 'common_utils';
-  static bool _debugMode = true; //是否是debug模式,true: log v 不输出.
-  static int _maxLen = 128;
-  static String _tagValue = _defTag;
+  final StackTrace _trace;
 
-  static void init({
-    String tag = _defTag,
-    bool isDebug = false,
-    int maxLen = 128,
-  }) {
-    _tagValue = tag;
-    _debugMode = isDebug;
-    _maxLen = maxLen;
+  String fileName = "";
+  int lineNumber = 0;
+  int columnNumber = 0;
+
+  LogUtil(this._trace) {
+    _parseTrace();
   }
 
-  static void d(Object? object, {String? tag}) {
-    if (_debugMode) {
-      log('$tag d | ${object?.toString()}');
-    }
+  void _parseTrace() {
+    var traceString = this._trace.toString().split("\n")[0];
+    var indexOfFileName = traceString.indexOf(RegExp(r'[A-Za-z_]+.dart'));
+    var fileInfo = traceString.substring(indexOfFileName);
+    var listOfInfos = fileInfo.split(":");
+    this.fileName = listOfInfos[0];
+    this.lineNumber = int.parse(listOfInfos[1]);
+    var columnStr = listOfInfos[2];
+    columnStr = columnStr.replaceFirst(")", "");
+    this.columnNumber = int.parse(columnStr);
   }
+}
 
-  static void e(Object? object, {String? tag}) {
-    _printLog(tag, ' e ', object);
-  }
-
-  static void v(Object? object, {String? tag}) {
-    if (_debugMode) {
-      _printLog(tag, ' v ', object);
+void fLog(Object message, StackTrace trace) {
+  if (kDebugMode) {
+    LogUtil programInfo = LogUtil(trace);
+    if (programInfo != null &&
+        programInfo.fileName != null &&
+        programInfo.lineNumber != null) {
+      print(
+          "所在：${programInfo.fileName} 第 ${programInfo.lineNumber} 行，打印信息：$message");
+    } else {
+      print("打印内容：$message");
     }
-  }
-
-  static void _printLog(String? tag, String stag, Object? object) {
-    String da = object?.toString() ?? 'null';
-    tag = tag ?? _tagValue;
-    if (da.length <= _maxLen) {
-      print('$tag$stag $da');
-      return;
-    }
-    print(
-        '$tag$stag — — — — — — — — — — — — — — — — st — — — — — — — — — — — — — — — —');
-    while (da.isNotEmpty) {
-      if (da.length > _maxLen) {
-        print('$tag$stag| ${da.substring(0, _maxLen)}');
-        da = da.substring(_maxLen, da.length);
-      } else {
-        print('$tag$stag| $da');
-        da = '';
-      }
-    }
-    print(
-        '$tag$stag — — — — — — — — — — — — — — — — ed — — — — — — — — — — — — — — — —');
   }
 }
