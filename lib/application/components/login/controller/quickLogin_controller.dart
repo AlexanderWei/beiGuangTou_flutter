@@ -57,13 +57,11 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
           keyboardConfig: Helper.getKeyboardActionsConfig(
               context,
               [
-                KeyboardItem(
-                  focusNode: _phoneTxtNode,
-                  onTap: () {
-                    checkPhoneNumber(_phoneController.text);
-                  },
-                  inputType: "number",
-                ).getItem(),
+                KeyboardActionsItem(
+                    focusNode: _phoneTxtNode,
+                    onTapAction: () {
+                      checkPhoneNumber(_phoneController.text);
+                    }),
               ],
               nextFocus: false),
           children: [

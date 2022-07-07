@@ -17,7 +17,6 @@ export '../third_party/flutter_easyrefresh/easy_refresh.dart';
 export '../widgets/text_button.dart';
 export '../widgets/text_field.dart';
 export '../widgets/list_view.dart';
-export '../widgets/keyboard_item.dart';
 export '../widgets/linear_progress.dart';
 
 export '../util/common_utils/common_utils.dart';

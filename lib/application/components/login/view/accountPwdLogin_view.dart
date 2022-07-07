@@ -18,18 +18,8 @@ class AccountPwdLoginView extends StatelessWidget {
       children: [
         MyListView(
           keyboardConfig: Helper.getKeyboardActionsConfig(context, [
-            KeyboardItem(
-              focusNode: _phoneTxtNode,
-              onTap: () {},
-              inputType: "number",
-            ).getItem(),
-            KeyboardItem(
-              focusNode: _pwdNode,
-              onTap: () {
-                fLog("👩来了", StackTrace.current);
-              },
-              inputType: "text",
-            ).getItem(),
+            KeyboardActionsItem(focusNode: _phoneTxtNode, onTapAction: () {}),
+            KeyboardActionsItem(focusNode: _pwdNode, displayDoneButton: false),
           ]),
           children: [
             _title(),
