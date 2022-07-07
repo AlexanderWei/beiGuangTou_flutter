@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application/application/components/login/view/accountPwdLogin_view.dart';
 import 'package:flutter_application/application/support_file/common_header.dart';
 
 enum QuickLoginType {
@@ -26,7 +27,6 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
   Enum loginType;
 
   FocusNode _phoneTxtNode = FocusNode();
-
   MyTextField? _phoneTextField;
   TextEditingController _phoneController = TextEditingController();
 
@@ -122,7 +122,14 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
             Container(
               margin: EdgeInsets.only(left: 28.sm),
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  NavigatorUtil.pushTo(
+                      context: context,
+                      function: QuickLoginController(
+                        loginType:
+                            QuickLoginType.quickLoginTypeByAccountPassword,
+                      ));
+                },
                 child: Text(
                   "密码登录",
                   style: TextStyle(fontSize: 14.sm, color: Theme_Yellow),
@@ -142,9 +149,7 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
         break;
 
       case QuickLoginType.quickLoginTypeByAccountPassword: // 账号密码登录类型
-        return Container(
-          color: Colors.green,
-        );
+        return AccountPwdLoginView();
         break;
 
       case QuickLoginType.quickLoginTypeAFP:
@@ -219,15 +224,13 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
         success: (resp) {
           Helper.cancelHUD(context: context);
 
-          fLog("👩${resp}", kTrace);
+          fLog("${resp}", kTrace);
           if ("${resp["Status"]}" == "1") {
             Helper.showToast(msg: "该手机号码未注册，请前往注册！");
           } else if ("${resp["Status"]}" == "3") {
             Helper.showToast(msg: "您已是理财师，请前往理财师登录！");
           }
         },
-        error: (err) {
-          print("🙅${err}");
-        });
+        error: (err) {});
   }
 }
