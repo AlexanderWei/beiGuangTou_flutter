@@ -8,6 +8,10 @@ class AccountPwdLoginView extends StatelessWidget {
   MyTextField? _phoneTextField;
   TextEditingController _phoneController = TextEditingController();
 
+  FocusNode _pwdNode = FocusNode();
+  MyTextField? _pwdTextField;
+  TextEditingController _pwdController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -21,8 +25,14 @@ class AccountPwdLoginView extends StatelessWidget {
           ]),
           children: [
             _title(),
-            SizedBox(height: 53.sm),
+            SizedBox(
+              height: 53.sm,
+            ),
             _phoneText(),
+            SizedBox(
+              height: 16.sm,
+            ),
+            _pwdText(),
           ],
         ),
       ],
@@ -50,6 +60,7 @@ class AccountPwdLoginView extends StatelessWidget {
       width: 0,
       height: 45.sm,
       controller: _phoneController,
+      focusNode: _phoneTxtNode,
       placeholder: "请输入手机号码",
       cornerRadius: 4.sm,
       keyboardType: TextInputType.number,
@@ -59,6 +70,26 @@ class AccountPwdLoginView extends StatelessWidget {
       focusedBorder: BorderSide(
         color: Colors.transparent,
       ),
+    );
+  }
+
+  // 密码
+  Widget _pwdText() {
+    return MyTextField(
+      margin: EdgeInsets.only(
+        left: 28.sm,
+        right: 28.sm,
+      ),
+      padding: EdgeInsets.only(
+        left: 16.sm,
+      ),
+      width: 0,
+      height: 45.sm,
+      controller: _pwdController,
+      placeholder: "请输入密码",
+      enabledBorder: BorderSide(color: Colors.transparent),
+      focusedBorder: BorderSide(color: Colors.transparent),
+      obscureText: true,
     );
   }
 }

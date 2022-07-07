@@ -5,7 +5,7 @@ class KeyboardItem extends StatelessWidget {
   KeyboardItem({
     Key? key,
     required this.focusNode,
-    this.inputType = "",
+    this.inputType = "text",
     required this.onTap,
   }) : super(key: key);
 

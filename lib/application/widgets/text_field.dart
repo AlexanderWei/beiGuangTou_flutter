@@ -23,6 +23,7 @@ class MyTextField extends StatefulWidget {
     this.inputAction = TextInputAction.done,
     this.focusNode,
     this.autofocus = false,
+    this.obscureText = false,
   }) : super(key: key);
 
   double width;
@@ -46,37 +47,13 @@ class MyTextField extends StatefulWidget {
   TextInputAction inputAction;
   final FocusNode? focusNode;
   bool autofocus;
+  bool obscureText;
 
   @override
   State<MyTextField> createState() => _MyTextFieldState();
 }
 
 class _MyTextFieldState extends State<MyTextField> {
-  bool _showClearBtn = false; // 是否显示清除按钮
-  // 清除输入的按钮
-  Widget clearButton() {
-    return Align(
-      alignment: Alignment(0.97, 0),
-      child: InkWell(
-        // 触发清除文本事件
-        onTap: () {
-          widget.controller.clear();
-        },
-
-        child: Visibility(
-          visible: (widget.hasClearButton == true ? _showClearBtn : false),
-          child: Container(
-            width: 25,
-            height: 25,
-            child: Image.asset(
-              AssetsPath.clear_button,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
   @override
   void initState() {
     // TODO: implement initState
@@ -137,14 +114,39 @@ class _MyTextFieldState extends State<MyTextField> {
               focusedBorder:
                   UnderlineInputBorder(borderSide: widget.focusedBorder),
             ),
-
             maxLength: widget.maxLength,
+            obscureText: widget.obscureText,
           ),
         ),
 
         // 清除按钮
         clearButton(),
       ]),
+    );
+  }
+
+  bool _showClearBtn = false; // 是否显示清除按钮
+  // 清除输入的按钮
+  Widget clearButton() {
+    return Align(
+      alignment: Alignment(0.97, 0),
+      child: InkWell(
+        // 触发清除文本事件
+        onTap: () {
+          widget.controller.clear();
+        },
+
+        child: Visibility(
+          visible: (widget.hasClearButton == true ? _showClearBtn : false),
+          child: Container(
+            width: 25,
+            height: 25,
+            child: Image.asset(
+              AssetsPath.clear_button,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
