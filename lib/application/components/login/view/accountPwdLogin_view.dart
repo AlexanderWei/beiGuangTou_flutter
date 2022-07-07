@@ -21,6 +21,14 @@ class AccountPwdLoginView extends StatelessWidget {
             KeyboardItem(
               focusNode: _phoneTxtNode,
               onTap: () {},
+              inputType: "number",
+            ).getItem(),
+            KeyboardItem(
+              focusNode: _pwdNode,
+              onTap: () {
+                fLog("👩来了", StackTrace.current);
+              },
+              inputType: "text",
             ).getItem(),
           ]),
           children: [
@@ -86,10 +94,14 @@ class AccountPwdLoginView extends StatelessWidget {
       width: 0,
       height: 45.sm,
       controller: _pwdController,
+      focusNode: _pwdNode,
       placeholder: "请输入密码",
       enabledBorder: BorderSide(color: Colors.transparent),
       focusedBorder: BorderSide(color: Colors.transparent),
       obscureText: true,
+      onEditingComplete: () {
+        fLog("👩提交密码", StackTrace.current);
+      },
     );
   }
 }

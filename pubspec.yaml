@@ -98,6 +98,8 @@ flutter:
     - assets/login/login_bar_back_icon.png
     - assets/common/clear_button.png
     - assets/common/appBar_back.png
+    - assets/common/secure_text_icon.png
+    - assets/common/insecure_text_icon.png
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

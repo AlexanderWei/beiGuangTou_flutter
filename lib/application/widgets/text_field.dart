@@ -24,6 +24,8 @@ class MyTextField extends StatefulWidget {
     this.focusNode,
     this.autofocus = false,
     this.obscureText = false,
+    this.hasObscureButton = false,
+    this.onEditingComplete,
   }) : super(key: key);
 
   double width;
@@ -48,6 +50,8 @@ class MyTextField extends StatefulWidget {
   final FocusNode? focusNode;
   bool autofocus;
   bool obscureText;
+  bool hasObscureButton; // 是否有 显示/隐藏 按钮，如果存在，则clearButton隐藏
+  VoidCallback? onEditingComplete; // 点击了键盘自带的 done 按钮事件
 
   @override
   State<MyTextField> createState() => _MyTextFieldState();
@@ -100,6 +104,7 @@ class _MyTextFieldState extends State<MyTextField> {
         Align(
           alignment: Alignment(-1, 0),
           child: TextField(
+            onEditingComplete: widget.onEditingComplete,
             textInputAction: widget.inputAction,
             keyboardType: widget.keyboardType,
             focusNode: widget.focusNode,
@@ -137,7 +142,10 @@ class _MyTextFieldState extends State<MyTextField> {
         },
 
         child: Visibility(
-          visible: (widget.hasClearButton == true ? _showClearBtn : false),
+          visible: ((widget.hasClearButton == true &&
+                  widget.hasObscureButton == false)
+              ? _showClearBtn
+              : false),
           child: Container(
             width: 25,
             height: 25,

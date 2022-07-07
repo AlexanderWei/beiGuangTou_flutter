@@ -5,7 +5,7 @@ class KeyboardItem extends StatelessWidget {
   KeyboardItem({
     Key? key,
     required this.focusNode,
-    this.inputType = "text",
+    required this.inputType,
     required this.onTap,
   }) : super(key: key);
 
@@ -35,27 +35,37 @@ class KeyboardItem extends StatelessWidget {
           },
         ],
       );
-    }
-
-    keyboardActionsItem = KeyboardActionsItem(
-      focusNode: focusNode,
-      toolbarButtons: [
-        (node) {
-          return GestureDetector(
-            onTap: onTap,
-            child: Container(
-              margin: EdgeInsets.only(right: 5),
-              color: Colors.black,
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                "DONE",
-                style: TextStyle(color: Colors.white),
+    } else if (inputType == "text") {
+      // 默认
+      keyboardActionsItem = KeyboardActionsItem(
+        focusNode: focusNode,
+        toolbarButtons: [
+          (node) {
+            return SizedBox.shrink();
+          },
+        ],
+      );
+    } else {
+      keyboardActionsItem = KeyboardActionsItem(
+        focusNode: focusNode,
+        toolbarButtons: [
+          (node) {
+            return GestureDetector(
+              onTap: onTap,
+              child: Container(
+                margin: EdgeInsets.only(right: 5),
+                color: Colors.black,
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  "DONE",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
-            ),
-          );
-        },
-      ],
-    );
+            );
+          },
+        ],
+      );
+    }
 
     return keyboardActionsItem;
   }

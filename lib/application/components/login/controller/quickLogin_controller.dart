@@ -59,7 +59,10 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
               [
                 KeyboardItem(
                   focusNode: _phoneTxtNode,
-                  onTap: () {},
+                  onTap: () {
+                    checkPhoneNumber(_phoneController.text);
+                  },
+                  inputType: "number",
                 ).getItem(),
               ],
               nextFocus: false),
@@ -168,7 +171,7 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
       appBar: AppBar(
         elevation: 0,
         leading: IconButton(
-          icon: Image.asset(AssetsPath.login_bar_back_icon),
+          icon: Image.asset(AssetsPath.login_bar_back),
           onPressed: () {
             NavigatorUtil.pop(context: context);
           },
@@ -217,6 +220,11 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
 
   /** 检查用户手机号状态 */
   checkPhoneNumber(String phoneNum) {
+    if (phoneNum.isEmpty) {
+      Helper.showToast(msg: "手机号不能为空！");
+      return;
+    }
+
     Helper.loadingHUD(context: context);
 
     LoginService.checkMobileStatus(
@@ -224,7 +232,7 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
         success: (resp) {
           Helper.cancelHUD(context: context);
 
-          fLog("${resp}", kTrace);
+          fLog("${resp}", StackTrace.current);
           if ("${resp["Status"]}" == "1") {
             Helper.showToast(msg: "该手机号码未注册，请前往注册！");
           } else if ("${resp["Status"]}" == "3") {

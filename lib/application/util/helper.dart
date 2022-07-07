@@ -37,7 +37,7 @@ class Helper {
   static showToast({
     required msg,
     ToastGravity gravity = ToastGravity.CENTER,
-    int showTime = 2,
+    int showTime = 1,
   }) {
     Fluttertoast.showToast(
       msg: msg,
