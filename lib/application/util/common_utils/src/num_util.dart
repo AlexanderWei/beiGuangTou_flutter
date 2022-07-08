@@ -1,5 +1,5 @@
-import 'package:decimal/decimal.dart';
-import 'package:rational/rational.dart';
+import '../../../third_party/dart_decimal/decimal.dart';
+import '../../../third_party/rational/rational.dart';
 
 /**
  * @Author: Sky24n

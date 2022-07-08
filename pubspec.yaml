@@ -35,16 +35,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
-  # https://github.com/a14n/dart-decimal
-  rational: ">=2.0.0 <5.0.0"
-  # https://github.com/a14n/dart-decimal
-  decimal: ">=2.0.0 <5.0.0"
-  # https://github.com/dart-lang/crypto
-  crypto: ">=3.0.0 <5.0.0"
-  # https://github.com/dart-lang/convert
-  convert: ">=3.0.0 <5.0.0"
-  
-
   # https://pub.flutter-io.cn/packages/dio
   dio: ^4.0.6
 

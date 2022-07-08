@@ -1,7 +1,6 @@
 import 'dart:convert';
-
-import 'package:crypto/crypto.dart';
-import 'package:convert/convert.dart';
+import '../../../third_party/convert/convert.dart';
+import '../../../third_party/crypto/crypto.dart';
 
 /**
  * @Author: Sky24n
