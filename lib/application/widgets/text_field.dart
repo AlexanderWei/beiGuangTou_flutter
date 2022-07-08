@@ -117,6 +117,9 @@ class _MyTextFieldState extends State<MyTextField> {
             ),
             maxLength: widget.maxLength,
             obscureText: (widget.isSecureEntry == true ? _isSecure : false),
+            inputFormatters: [
+              FilteringTextInputFormatter.deny(RegExp('[ ]')), // 限制不能输入空格
+            ],
           ),
         ),
 
@@ -166,16 +169,17 @@ class _MyTextFieldState extends State<MyTextField> {
           });
         },
         child: Visibility(
-            visible: (widget.controller.text.isEmpty == true
-                ? false
-                : widget.isSecureEntry),
-            child: Container(
-              width: 25,
-              height: 25,
-              child: (_isSecure == true
-                  ? Image.asset(AssetsPath.secure_text_icon)
-                  : Image.asset(AssetsPath.insecure_text_icon)),
-            )),
+          visible: (widget.controller.text.isEmpty == true
+              ? false
+              : widget.isSecureEntry),
+          child: Container(
+            width: 25,
+            height: 25,
+            child: (_isSecure == true
+                ? Image.asset(AssetsPath.secure_text_icon)
+                : Image.asset(AssetsPath.insecure_text_icon)),
+          ),
+        ),
       ),
     );
   }
