@@ -18,47 +18,29 @@ class MyScrollView extends StatelessWidget {
     Widget scrollView;
 
     if (keyboardConfig != null) {
-      if (isScrollable == false) {
-        scrollView = KeyboardActions(
-          tapOutsideBehavior: TapOutsideBehavior.translucentDismiss,
-          config: keyboardConfig!,
-          child: SingleChildScrollView(
-            physics: const NeverScrollableScrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: children,
-            ),
+      scrollView = KeyboardActions(
+        tapOutsideBehavior: TapOutsideBehavior.translucentDismiss,
+        config: keyboardConfig!,
+        child: SingleChildScrollView(
+          physics: (isScrollable == true
+              ? null
+              : const NeverScrollableScrollPhysics()),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: children,
           ),
-        );
-      } else {
-        scrollView = KeyboardActions(
-          tapOutsideBehavior: TapOutsideBehavior.translucentDismiss,
-          config: keyboardConfig!,
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: children,
-            ),
-          ),
-        );
-      }
+        ),
+      );
     } else {
-      if (isScrollable == false) {
-        scrollView = SingleChildScrollView(
-          physics: const NeverScrollableScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: children,
-          ),
-        );
-      } else {
-        scrollView = SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: children,
-          ),
-        );
-      }
+      scrollView = SingleChildScrollView(
+        physics: (isScrollable == true
+            ? null
+            : const NeverScrollableScrollPhysics()),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: children,
+        ),
+      );
     }
 
     return scrollView;

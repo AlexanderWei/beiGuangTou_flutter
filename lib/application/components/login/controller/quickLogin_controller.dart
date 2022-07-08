@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/application/components/login/view/accountPwdLogin_view.dart';
 import 'package:flutter_application/application/support_file/common_header.dart';
@@ -52,8 +51,8 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
   Widget body(BuildContext context, Enum loginType) {
     switch (loginType) {
       case QuickLoginType.quickLoginTypeByPhone:
-        return MyListView(
-          isScrollable: false,
+        return MyScrollView(
+          // isScrollable: false,
           keyboardConfig: Helper.getKeyboardActionsConfig(
               context,
               [
@@ -81,9 +80,9 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
 
             // 请输入手机号码
             _phoneTextField = MyTextField(
-              margin: EdgeInsets.only(left: 28.sm, right: 28.sm),
+              margin: EdgeInsets.only(left: 28.sm),
               padding: EdgeInsets.fromLTRB(16.sm, 0, 0, 0),
-              width: 0,
+              width: 1.sw - 2 * 28.sm,
               height: 45.sm,
               controller: _phoneController,
               placeholder: '请输入手机号码',
