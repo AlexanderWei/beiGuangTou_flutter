@@ -21,7 +21,7 @@ class _WebViewPageState extends State<WebViewPage> {
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
 
-  LinearProgress _progressIndicator = LinearProgress(
+  final LinearProgress _progressIndicator = LinearProgress(
     valueColor: Theme_Yellow,
     minHeight: 1.5,
   );
@@ -55,7 +55,6 @@ class _WebViewPageState extends State<WebViewPage> {
         ),
       ),
       body: Stack(children: [
-        _progressIndicator,
         WebView(
           initialUrl: widget.url,
           javascriptMode: JavascriptMode.unrestricted,

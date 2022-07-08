@@ -18,13 +18,11 @@ class MyTextField extends StatefulWidget {
         const BorderSide(color: Color.fromRGBO(223, 223, 223, 1)),
     this.focusedBorder = const BorderSide(color: Colors.blue),
     this.keyboardType = TextInputType.text,
-    this.hasClearButton = true,
     this.maxLength,
     this.inputAction = TextInputAction.done,
     this.focusNode,
     this.autofocus = false,
-    this.obscureText = false,
-    this.hasObscureButton = false,
+    this.isSecureEntry = false,
     this.onEditingComplete,
   }) : super(key: key);
 
@@ -44,13 +42,11 @@ class MyTextField extends StatefulWidget {
   TextStyle? placeholderStyle;
   TextInputType keyboardType;
   TextEditingController controller;
-  bool hasClearButton; // 是否有清除按钮
   int? maxLength;
   TextInputAction inputAction;
   final FocusNode? focusNode;
   bool autofocus;
-  bool obscureText;
-  bool hasObscureButton; // 是否有 显示/隐藏 按钮，如果存在，则clearButton隐藏
+  bool isSecureEntry; // 是否是密码安全的类型？如果是，则clearButton隐藏。
   VoidCallback? onEditingComplete; // 点击了键盘自带的 done 按钮事件
 
   @override
@@ -120,12 +116,15 @@ class _MyTextFieldState extends State<MyTextField> {
                   UnderlineInputBorder(borderSide: widget.focusedBorder),
             ),
             maxLength: widget.maxLength,
-            obscureText: widget.obscureText,
+            obscureText: (widget.isSecureEntry == true ? _isSecure : false),
           ),
         ),
 
         // 清除按钮
         clearButton(),
+
+        // 显示密码按钮
+        _obscureButton(),
       ]),
     );
   }
@@ -142,10 +141,7 @@ class _MyTextFieldState extends State<MyTextField> {
         },
 
         child: Visibility(
-          visible: ((widget.hasClearButton == true &&
-                  widget.hasObscureButton == false)
-              ? _showClearBtn
-              : false),
+          visible: (widget.isSecureEntry == true ? false : _showClearBtn),
           child: Container(
             width: 25,
             height: 25,
@@ -154,6 +150,32 @@ class _MyTextFieldState extends State<MyTextField> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  bool _isSecure = true; // 是否密码安全
+  // 显示密码的按钮
+  Widget _obscureButton() {
+    return Align(
+      alignment: Alignment(0.97, 0),
+      child: InkWell(
+        onTap: () {
+          setState(() {
+            _isSecure = !_isSecure;
+          });
+        },
+        child: Visibility(
+            visible: (widget.controller.text.isEmpty == true
+                ? false
+                : widget.isSecureEntry),
+            child: Container(
+              width: 25,
+              height: 25,
+              child: (_isSecure == true
+                  ? Image.asset(AssetsPath.secure_text_icon)
+                  : Image.asset(AssetsPath.insecure_text_icon)),
+            )),
       ),
     );
   }

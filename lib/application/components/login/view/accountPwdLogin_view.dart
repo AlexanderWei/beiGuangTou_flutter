@@ -17,6 +17,7 @@ class AccountPwdLoginView extends StatelessWidget {
     return Stack(
       children: [
         MyListView(
+          isScrollable: false,
           keyboardConfig: Helper.getKeyboardActionsConfig(context, [
             KeyboardActionsItem(focusNode: _phoneTxtNode, onTapAction: () {}),
             KeyboardActionsItem(focusNode: _pwdNode, displayDoneButton: false),
@@ -68,6 +69,7 @@ class AccountPwdLoginView extends StatelessWidget {
       focusedBorder: BorderSide(
         color: Colors.transparent,
       ),
+      maxLength: 11,
     );
   }
 
@@ -88,7 +90,7 @@ class AccountPwdLoginView extends StatelessWidget {
       placeholder: "请输入密码",
       enabledBorder: BorderSide(color: Colors.transparent),
       focusedBorder: BorderSide(color: Colors.transparent),
-      obscureText: true,
+      isSecureEntry: true,
       onEditingComplete: () {
         fLog("👩提交密码", StackTrace.current);
       },
