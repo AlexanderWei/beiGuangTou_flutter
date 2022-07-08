@@ -32,6 +32,13 @@ class AccountPwdLoginView extends StatelessWidget {
               height: 16.sm,
             ),
             _pwdText(),
+            SizedBox(
+              height: 42.sm,
+            ),
+            LoginButton(
+              phoneController: _phoneController,
+              pwdController: _pwdController,
+            ),
           ],
         ),
       ],
@@ -95,5 +102,65 @@ class AccountPwdLoginView extends StatelessWidget {
         fLog("👩提交密码", StackTrace.current);
       },
     );
+  }
+}
+
+/** 立即登录按钮 */
+class LoginButton extends StatefulWidget {
+  LoginButton({
+    Key? key,
+    required this.phoneController,
+    required this.pwdController,
+  }) : super(key: key);
+
+  bool isEnable = false;
+  String _phoneStr = "";
+  String _passwordStr = "";
+  TextEditingController phoneController;
+  TextEditingController pwdController;
+
+  @override
+  State<LoginButton> createState() => _LoginButtonState();
+}
+
+class _LoginButtonState extends State<LoginButton> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    widget.phoneController.addListener(() {
+      widget._phoneStr = widget.phoneController.text;
+      loginEnableJudge();
+    });
+    widget.pwdController.addListener(() {
+      widget._passwordStr = widget.pwdController.text;
+      loginEnableJudge();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MyTextButton(
+      margin: EdgeInsets.only(left: 28.sm),
+      onPressed: (widget.isEnable == true ? () {} : null),
+      width: 1.sw - 28.sm * 2,
+      height: 45.sm,
+      text: '立即登录',
+      cornerRadius: 4.sm,
+      bgColor: kBtnDisableColor,
+      bgImgName:
+          (widget.isEnable == true ? "assets/login/btn_login_bg.png" : null),
+    );
+  }
+
+  loginEnableJudge() {
+    bool _isEnable = widget._phoneStr.isNotEmpty == true &&
+        widget._passwordStr.isNotEmpty == true;
+    if (widget.isEnable != _isEnable) {
+      setState(() {
+        widget.isEnable = _isEnable;
+      });
+    }
   }
 }
