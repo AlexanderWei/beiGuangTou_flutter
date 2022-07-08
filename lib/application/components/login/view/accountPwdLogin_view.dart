@@ -16,7 +16,7 @@ class AccountPwdLoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        MyListView(
+        MyScrollView(
           isScrollable: false,
           keyboardConfig: Helper.getKeyboardActionsConfig(context, [
             KeyboardActionsItem(
@@ -25,21 +25,13 @@ class AccountPwdLoginView extends StatelessWidget {
           ]),
           children: [
             _title(),
-            SizedBox(
-              height: 53.sm,
-            ),
             _phoneText(),
-            SizedBox(
-              height: 16.sm,
-            ),
             _pwdText(),
-            SizedBox(
-              height: 42.sm,
-            ),
             LoginButton(
               phoneController: _phoneController,
               pwdController: _pwdController,
             ),
+            _forgetPwdButton(),
           ],
         ),
         relatedAgreements(context),
@@ -49,7 +41,7 @@ class AccountPwdLoginView extends StatelessWidget {
 
   Widget _title() {
     return Container(
-      margin: EdgeInsets.only(top: 36.sm, left: 28.sm),
+      margin: EdgeInsets.only(left: 28.sm, top: 36.h),
       child: Text(
         "账号密码登录",
         style: TextStyle(
@@ -64,8 +56,8 @@ class AccountPwdLoginView extends StatelessWidget {
   Widget _phoneText() {
     return MyTextField(
       padding: EdgeInsets.only(left: 16.sm),
-      margin: EdgeInsets.only(left: 28.sm, right: 28.sm),
-      width: 0,
+      margin: EdgeInsets.only(left: 28.sm, top: 53.sm),
+      width: 1.sw - 2 * 28.sm,
       height: 45.sm,
       controller: _phoneController,
       focusNode: _phoneTxtNode,
@@ -85,14 +77,9 @@ class AccountPwdLoginView extends StatelessWidget {
   // 密码
   Widget _pwdText() {
     return MyTextField(
-      margin: EdgeInsets.only(
-        left: 28.sm,
-        right: 28.sm,
-      ),
-      padding: EdgeInsets.only(
-        left: 16.sm,
-      ),
-      width: 0,
+      margin: EdgeInsets.only(left: 28.sm, top: 16.sm),
+      padding: EdgeInsets.only(left: 16.sm),
+      width: 1.sw - 2 * 28.sm,
       height: 45.sm,
       controller: _pwdController,
       focusNode: _pwdNode,
@@ -147,6 +134,32 @@ class AccountPwdLoginView extends StatelessWidget {
       ),
     );
   }
+
+  /** 忘记密码 */
+  Widget _forgetPwdButton() {
+    return Container(
+      width: 1.sw - 2 * 24.sm,
+      height: 30,
+      margin: EdgeInsets.only(top: 20.sm, left: 24.sm),
+      child: Row(
+        children: [
+          Expanded(child: SizedBox()),
+          InkWell(
+            onTap: () {
+              print("👩忘记密码");
+            },
+            child: Text(
+              "忘记密码？",
+              style: TextStyle(
+                fontSize: 14.sm,
+                color: kTextGrayColor,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 /** 立即登录按钮 */
@@ -186,7 +199,7 @@ class _LoginButtonState extends State<LoginButton> {
   @override
   Widget build(BuildContext context) {
     return MyTextButton(
-      margin: EdgeInsets.only(left: 28.sm),
+      margin: EdgeInsets.only(left: 28.sm, top: 42.sm),
       onPressed: (widget.isEnable == true
           ? () {
               checkPhoneNumber(widget.phoneController.text);
