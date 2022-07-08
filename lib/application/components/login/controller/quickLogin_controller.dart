@@ -166,6 +166,7 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         elevation: 0,
         leading: IconButton(
@@ -179,7 +180,7 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
     );
   }
 
-/** 用户注册等相关协议 */
+  /** 用户注册等相关协议 */
   Widget relatedAgreements() {
     return Container(
       child: Row(

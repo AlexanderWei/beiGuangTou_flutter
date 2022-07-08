@@ -19,7 +19,8 @@ class AccountPwdLoginView extends StatelessWidget {
         MyListView(
           isScrollable: false,
           keyboardConfig: Helper.getKeyboardActionsConfig(context, [
-            KeyboardActionsItem(focusNode: _phoneTxtNode, onTapAction: () {}),
+            KeyboardActionsItem(
+                focusNode: _phoneTxtNode, displayDoneButton: false),
             KeyboardActionsItem(focusNode: _pwdNode, displayDoneButton: false),
           ]),
           children: [
@@ -41,6 +42,7 @@ class AccountPwdLoginView extends StatelessWidget {
             ),
           ],
         ),
+        relatedAgreements(context),
       ],
     );
   }
@@ -103,6 +105,48 @@ class AccountPwdLoginView extends StatelessWidget {
       },
     );
   }
+
+  /** 用户注册等相关协议 */
+  Widget relatedAgreements(BuildContext context) {
+    return Positioned(
+      bottom: 79.h,
+      child: Container(
+        width: 1.sw,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "登录即已同意",
+              style: TextStyle(
+                fontSize: 12.sm,
+                color: kTextGrayColor,
+              ),
+            ),
+
+            // 可点击部分
+            GestureDetector(
+              onTap: () {
+                NavigatorUtil.pushTo(
+                    context: context,
+                    function: WebViewPage(
+                      url:
+                          "https://www.beiguangtou.com/H5/agreement/index.html",
+                      title: "用户注册等相关协议",
+                    ));
+              },
+              child: Text(
+                "《用户注册等相关协议》",
+                style: TextStyle(
+                  fontSize: 12.sm,
+                  color: Theme_Yellow,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 /** 立即登录按钮 */
@@ -143,7 +187,11 @@ class _LoginButtonState extends State<LoginButton> {
   Widget build(BuildContext context) {
     return MyTextButton(
       margin: EdgeInsets.only(left: 28.sm),
-      onPressed: (widget.isEnable == true ? () {} : null),
+      onPressed: (widget.isEnable == true
+          ? () {
+              checkPhoneNumber(widget.phoneController.text);
+            }
+          : null),
       width: 1.sw - 28.sm * 2,
       height: 45.sm,
       text: '立即登录',
@@ -163,4 +211,33 @@ class _LoginButtonState extends State<LoginButton> {
       });
     }
   }
+
+  /** 检查用户手机号状态 */
+  checkPhoneNumber(String phoneNum) {
+    if (phoneNum.isEmpty) {
+      Helper.showToast(msg: "手机号不能为空！");
+      return;
+    }
+
+    Helper.loadingHUD(context: context);
+
+    LoginService.checkMobileStatus(
+        parameter: {"mobile": phoneNum},
+        success: (resp) {
+          Helper.cancelHUD(context: context);
+
+          fLog("${resp}", StackTrace.current);
+          if ("${resp["Status"]}" == "1") {
+            Helper.showToast(msg: "该手机号码未注册，请前往注册！");
+          } else if ("${resp["Status"]}" == "3") {
+            Helper.showToast(msg: "您已是理财师，请前往理财师登录！");
+          } else if ("${resp["Status"]}" == "2") {
+            goLogin();
+          }
+        },
+        error: (err) {});
+  }
+
+  /** 直接登录 */
+  goLogin() {}
 }
