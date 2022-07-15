@@ -74,4 +74,13 @@ class Helper {
         USER_KEY, (v) => UserModel.fromJson(v as Map<String, dynamic>));
     return user;
   }
+
+  static eventDelay({
+    required int msec,
+    required Function event,
+  }) {
+    Future.delayed(Duration(milliseconds: msec)).then((value) {
+      return event;
+    });
+  }
 }

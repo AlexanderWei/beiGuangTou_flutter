@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/application/components/base/app_root.dart';
 import 'package:flutter_application/application/provider/login_provider.dart';
 import '../../../support_file/common_header.dart';
 
@@ -268,7 +269,8 @@ class _LoginButtonState extends State<LoginButton> {
             SpUtil.putObject(USER_KEY, userModel);
 
             SpUtil.putBool("isLogined", true);
-            context.read<LoginProvider>().rootForApplication(context: context);
+            NavigatorUtil.popToRoot(
+                context: context, function: const AppRoot());
           } else {
             Helper.showToast(msg: resp["msg"]);
           }

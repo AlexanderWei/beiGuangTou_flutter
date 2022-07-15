@@ -4,18 +4,14 @@ import '../components/login/controller/landingPage_controller.dart';
 import '../support_file/common_header.dart';
 
 class LoginProvider with ChangeNotifier {
-  Widget appRoot = Container();
+  Widget appRoot = Container(color: Colors.white);
   int bottomTabsIndex = 0;
 
   /** 设置/重制 app的根视图 */
-  rootForApplication({required BuildContext context}) {
+  rootForApplication() {
     bool? isLogined = SpUtil.getBool("isLogined");
     if (isLogined != null && isLogined == true) {
       appRoot = AppRoot.createIndexPage();
-      NavigatorUtil.popToRoot(
-        context: context,
-        function: appRoot,
-      );
     } else {
       appRoot = LandingPageController();
     }

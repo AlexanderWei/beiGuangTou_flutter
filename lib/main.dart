@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Helper.createMaterialColor(Colors.transparent),
       ),
-      home: AppRoot(),
+      home: const AppRoot(),
     );
   }
 }
