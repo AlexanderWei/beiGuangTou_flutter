@@ -258,12 +258,13 @@ class _LoginButtonState extends State<LoginButton> {
     LoginService.userLogin(
         parameter: {"password": widget._passwordStr, "phone": widget._phoneStr},
         success: (resp) {
-          fLog(resp, StackTrace.current);
+          fLog("👩${JsonUtil.encodeObj(resp)}", StackTrace.current);
 
           Helper.cancelHUD(context: context);
 
           if ("${resp["Status"]}" == "0") {
-            fLog("👩${resp["data"]}", StackTrace.current);
+            UserModel userModel = UserModel.fromJson(resp["data"]);
+            SpUtil.putObject(USER_MODEL_KEY, userModel);
           } else {
             Helper.showToast(msg: resp["msg"]);
           }

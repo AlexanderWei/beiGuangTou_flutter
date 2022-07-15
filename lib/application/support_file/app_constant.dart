@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 const String Base_Url = "https://www.beiguangtou.com/api1/";
 
+const String USER_MODEL_KEY = "userModelKey";
+
 /** 颜色 */
 const Color Theme_Yellow = Color(0xffCAA26F);
 const Color kBtnDisableColor = Color.fromRGBO(223, 223, 223, 1);
