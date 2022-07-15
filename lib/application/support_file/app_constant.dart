@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const String Base_Url = "https://www.beiguangtou.com/api1/";
 
-const String USER_MODEL_KEY = "userModelKey";
+const String USER_KEY = "userModelKey";
 
 /** 颜色 */
 const Color Theme_Yellow = Color(0xffCAA26F);

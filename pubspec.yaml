@@ -93,6 +93,15 @@ flutter:
     - assets/common/appBar_back.png
     - assets/common/secure_text_icon.png
     - assets/common/insecure_text_icon.png
+
+    - assets/bar_item/tab_home_norm.png
+    - assets/bar_item/tab_home_sel.png
+    - assets/bar_item/tab_mall_norm.png
+    - assets/bar_item/tab_mall_sel.png
+    - assets/bar_item/tab_activity_norm.png
+    - assets/bar_item/tab_activity_sel.png
+    - assets/bar_item/tab_my_norm.png
+    - assets/bar_item/tab_my_sel.png
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

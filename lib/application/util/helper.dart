@@ -67,4 +67,11 @@ class Helper {
   static cancelHUD({required BuildContext context}) {
     Navigator.pop(context);
   }
+
+  /** 获取存储在本地的用户信息 */
+  static UserModel? getUser() {
+    UserModel? user = SpUtil.getObj(
+        USER_KEY, (v) => UserModel.fromJson(v as Map<String, dynamic>));
+    return user;
+  }
 }

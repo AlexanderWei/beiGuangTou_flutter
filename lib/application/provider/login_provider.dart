@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../components/base/app_root.dart';
 import '../components/login/controller/landingPage_controller.dart';
 import '../support_file/common_header.dart';
 
@@ -7,13 +8,10 @@ class LoginProvider with ChangeNotifier {
   int bottomTabsIndex = 0;
 
   /** 设置/重制 app的根视图 */
-  rootForApplication({required BuildContext context}) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool? isLogined = prefs.getBool("isLogined");
+  rootForApplication({required BuildContext context}) {
+    bool? isLogined = SpUtil.getBool("isLogined");
     if (isLogined != null && isLogined == true) {
-      appRoot = Container(
-        color: Colors.purpleAccent,
-      );
+      appRoot = AppRoot.createIndexPage();
       NavigatorUtil.popToRoot(
         context: context,
         function: appRoot,
@@ -25,16 +23,10 @@ class LoginProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  /**底部导航栏切换 */
-  // setBottomTabsIndex(int index) async {
-  // SharedPreferences prefs = await SharedPreferences.getInstance();
-  // bool? isLogined = prefs.getBool("isLogined");
-  // if (isLogined != null && isLogined == true) {
-  //   bottomTabsIndex = index;
-  // } else {
+  /** 根视图 BottomNavigationBar 切换 */
+  setBottomTabsIndex(int index) {
+    bottomTabsIndex = index;
 
-  // }
-
-  // notifyListeners();
-  // }
+    notifyListeners();
+  }
 }
