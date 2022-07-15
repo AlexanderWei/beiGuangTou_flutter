@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'application/components/base/app_root.dart';
 import 'application/support_file/common_header.dart';
-import 'application/provider/login_provider.dart';
+import 'application/provider/root_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +16,7 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => LoginProvider()),
+        ChangeNotifierProvider(create: (_) => RootProvider()),
       ],
       child: MyApp(),
     ),

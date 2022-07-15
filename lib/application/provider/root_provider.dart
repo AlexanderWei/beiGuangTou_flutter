@@ -3,7 +3,7 @@ import '../components/base/app_root.dart';
 import '../components/login/controller/landingPage_controller.dart';
 import '../support_file/common_header.dart';
 
-class LoginProvider with ChangeNotifier {
+class RootProvider with ChangeNotifier {
   Widget appRoot = Container(color: Colors.white);
   int bottomTabsIndex = 0;
 

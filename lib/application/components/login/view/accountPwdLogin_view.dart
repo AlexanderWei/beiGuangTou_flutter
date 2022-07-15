@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/application/components/base/app_root.dart';
-import 'package:flutter_application/application/provider/login_provider.dart';
+import 'package:flutter_application/application/provider/root_provider.dart';
 import '../../../support_file/common_header.dart';
 
 class AccountPwdLoginView extends StatelessWidget {

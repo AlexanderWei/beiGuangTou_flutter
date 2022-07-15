@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../support_file/common_header.dart';
-import '../../provider/login_provider.dart';
+import '../../provider/root_provider.dart';
 
 class AppRoot extends StatelessWidget {
   const AppRoot({Key? key}) : super(key: key);
@@ -11,11 +11,11 @@ class AppRoot extends StatelessWidget {
     ScreenUtil.init(context);
 
     Future.delayed(Duration(milliseconds: 200)).then((value) {
-      context.read<LoginProvider>().rootForApplication();
+      context.read<RootProvider>().rootForApplication();
     });
 
     return Container(
-      child: context.watch<LoginProvider>().appRoot,
+      child: context.watch<RootProvider>().appRoot,
     );
   }
 
@@ -67,12 +67,12 @@ class IndexPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int tabIndex = context.watch<LoginProvider>().bottomTabsIndex;
+    int tabIndex = context.watch<RootProvider>().bottomTabsIndex;
 
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         onTap: (index) {
-          context.read<LoginProvider>().setBottomTabsIndex(index);
+          context.read<RootProvider>().setBottomTabsIndex(index);
         },
         type: BottomNavigationBarType.fixed,
         currentIndex: tabIndex,
