@@ -34,7 +34,4 @@ export '../components/base/webView_page.dart';
 
 export '../service/login_service.dart';
 
-/**
- * 模型
- */
 export '../components/login/model/user_model.dart';

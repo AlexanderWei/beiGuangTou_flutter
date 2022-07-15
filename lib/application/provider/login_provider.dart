@@ -11,6 +11,9 @@ class LoginProvider with ChangeNotifier {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool? isLogined = prefs.getBool("isLogined");
     if (isLogined != null && isLogined == true) {
+      appRoot = Container(
+        color: Colors.purpleAccent,
+      );
     } else {
       appRoot = LandingPageController();
     }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/application/provider/login_provider.dart';
 import '../../../support_file/common_header.dart';
 
 class AccountPwdLoginView extends StatelessWidget {
@@ -265,6 +266,9 @@ class _LoginButtonState extends State<LoginButton> {
           if ("${resp["Status"]}" == "0") {
             UserModel userModel = UserModel.fromJson(resp["data"]);
             SpUtil.putObject(USER_MODEL_KEY, userModel);
+
+            SpUtil.putBool("isLogined", true);
+            context.read<LoginProvider>().rootForApplication();
           } else {
             Helper.showToast(msg: resp["msg"]);
           }
