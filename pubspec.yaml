@@ -59,6 +59,9 @@ dependencies:
   # https://pub.flutter-io.cn/packages/fluttertoast
   fluttertoast: ^8.0.9
 
+  # https://pub.flutter-io.cn/packages/package_info
+  package_info: ^2.0.2
+
   
 
 dev_dependencies:

@@ -30,8 +30,11 @@ class NetworkUtil {
     parameter["token"] = token;
 
     /** 获取请求头 */
+    PackageInfo info = await PackageInfo.fromPlatform();
+    String version = info.version;
+    version = version.replaceAll(RegExp("\\."), "");
     Map<String, dynamic> headers = {
-      "version": "125",
+      "version": version,
       "device": "2",
       "token": token,
       "islogin": "1",
