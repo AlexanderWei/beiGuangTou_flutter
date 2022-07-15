@@ -24,13 +24,24 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key) {}
+  MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: [
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+      ],
+      // 支持的国际化语言
+      supportedLocales: [
+        Locale.fromSubtags(languageCode: "en"),
+        Locale.fromSubtags(languageCode: "zh"),
+      ],
+
       theme: ThemeData(
         // This is the theme of your application.
         //

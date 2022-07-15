@@ -7,6 +7,7 @@ export 'dart:async';
 export 'dart:io';
 
 export 'package:dio/dio.dart';
+export 'package:flutter_localizations/flutter_localizations.dart';
 export 'package:provider/provider.dart';
 export 'package:webview_flutter/webview_flutter.dart';
 export 'package:fluttertoast/fluttertoast.dart';
