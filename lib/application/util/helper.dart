@@ -75,7 +75,7 @@ class Helper {
     return user;
   }
 
-  static eventDelay({
+  static delayedEvent({
     required int msec,
     required Function event,
   }) {
