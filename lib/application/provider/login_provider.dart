@@ -6,14 +6,24 @@ class LoginProvider with ChangeNotifier {
   Widget appRoot = Container();
   int bottomTabsIndex = 0;
 
-  /**设置应用的根 */
-  rootForApplication() async {
+  /** 设置/重制 app的根视图 */
+  rootForApplication({BuildContext? context}) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool? isLogined = prefs.getBool("isLogined");
     if (isLogined != null && isLogined == true) {
-      appRoot = Container(
-        color: Colors.purpleAccent,
-      );
+      if (context != null) {
+        appRoot = Container(
+          color: Colors.purpleAccent,
+        );
+        NavigatorUtil.popToRoot(
+          context: context,
+          function: appRoot,
+        );
+      } else {
+        appRoot = Container(
+          color: Colors.greenAccent,
+        );
+      }
     } else {
       appRoot = LandingPageController();
     }

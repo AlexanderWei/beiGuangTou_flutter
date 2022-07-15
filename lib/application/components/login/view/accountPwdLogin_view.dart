@@ -268,7 +268,7 @@ class _LoginButtonState extends State<LoginButton> {
             SpUtil.putObject(USER_MODEL_KEY, userModel);
 
             SpUtil.putBool("isLogined", true);
-            context.read<LoginProvider>().rootForApplication();
+            context.read<LoginProvider>().rootForApplication(context: context);
           } else {
             Helper.showToast(msg: resp["msg"]);
           }

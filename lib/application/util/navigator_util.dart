@@ -11,4 +11,14 @@ class NavigatorUtil {
   static pop({required BuildContext context}) {
     Navigator.pop(context);
   }
+
+  static popToRoot({
+    required BuildContext context,
+    required Widget function,
+  }) {
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(builder: (context) => function),
+      (route) => route == null,
+    );
+  }
 }
