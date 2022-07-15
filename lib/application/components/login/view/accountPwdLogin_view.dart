@@ -252,5 +252,23 @@ class _LoginButtonState extends State<LoginButton> {
   }
 
   /** 直接登录 */
-  goLogin() {}
+  goLogin() {
+    Helper.loadingHUD(context: context);
+
+    LoginService.userLogin(
+        parameter: {"password": widget._passwordStr, "phone": widget._phoneStr},
+        success: (resp) {
+          fLog(resp, StackTrace.current);
+
+          Helper.cancelHUD(context: context);
+
+          if ("👩${resp["Status"]}" == "0") {
+          } else {
+            Helper.showToast(msg: resp["msg"]);
+          }
+        },
+        error: (err) {
+          Helper.cancelHUD(context: context);
+        });
+  }
 }

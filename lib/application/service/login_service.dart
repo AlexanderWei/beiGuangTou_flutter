@@ -14,4 +14,18 @@ class LoginService {
         success: success,
         error: error);
   }
+
+  /** 账号密码登录 */
+  static userLogin({
+    required Map<String, dynamic> parameter,
+    required success(dynamic response),
+    required error(DioError? error),
+  }) {
+    NetworkUtil.requestHttp(
+        urlStr: Base_Url + "Users/login",
+        parameter: parameter,
+        method: "post",
+        success: success,
+        error: error);
+  }
 }

@@ -48,9 +48,12 @@ class NetworkUtil {
       try {
         Response response = await dio.post(urlStr, data: formData);
         return success(response.data);
-      } catch (e) {
-        DioError? err = e as DioError;
-        error(err);
+      } on DioError catch (e) {
+        if (e.response != null) {
+          fLog(e.response!.data, StackTrace.current);
+        } else {
+          fLog(e.message, StackTrace.current);
+        }
       }
     }
   }
