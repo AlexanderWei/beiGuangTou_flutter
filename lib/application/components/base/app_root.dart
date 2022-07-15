@@ -9,7 +9,7 @@ class AppRoot extends StatelessWidget {
     // 屏幕适配
     ScreenUtil.init(context);
 
-    context.read<LoginProvider>().rootForApplication();
+    context.read<LoginProvider>().rootForApplication(context: context);
 
     return Container(
       child: context.watch<LoginProvider>().appRoot,

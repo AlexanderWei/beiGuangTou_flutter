@@ -7,23 +7,17 @@ class LoginProvider with ChangeNotifier {
   int bottomTabsIndex = 0;
 
   /** 设置/重制 app的根视图 */
-  rootForApplication({BuildContext? context}) async {
+  rootForApplication({required BuildContext context}) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool? isLogined = prefs.getBool("isLogined");
     if (isLogined != null && isLogined == true) {
-      if (context != null) {
-        appRoot = Container(
-          color: Colors.purpleAccent,
-        );
-        NavigatorUtil.popToRoot(
-          context: context,
-          function: appRoot,
-        );
-      } else {
-        appRoot = Container(
-          color: Colors.greenAccent,
-        );
-      }
+      appRoot = Container(
+        color: Colors.purpleAccent,
+      );
+      NavigatorUtil.popToRoot(
+        context: context,
+        function: appRoot,
+      );
     } else {
       appRoot = LandingPageController();
     }
