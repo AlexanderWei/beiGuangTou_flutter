@@ -262,7 +262,8 @@ class _LoginButtonState extends State<LoginButton> {
 
           Helper.cancelHUD(context: context);
 
-          if ("👩${resp["Status"]}" == "0") {
+          if ("${resp["Status"]}" == "0") {
+            fLog("👩${resp["data"]}", StackTrace.current);
           } else {
             Helper.showToast(msg: resp["msg"]);
           }
