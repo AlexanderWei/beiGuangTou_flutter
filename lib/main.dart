@@ -18,13 +18,13 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => RootProvider()),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -36,12 +36,10 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
       ],
-      // 支持的国际化语言
       supportedLocales: [
         Locale.fromSubtags(languageCode: "en"),
         Locale.fromSubtags(languageCode: "zh"),
       ],
-
       theme: ThemeData(
         // This is the theme of your application.
         //

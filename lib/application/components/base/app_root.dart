@@ -12,6 +12,8 @@ class AppRoot extends StatelessWidget {
 
     Future.delayed(Duration(milliseconds: 200)).then((value) {
       context.read<RootProvider>().rootForApplication();
+
+      printScreenInformation();
     });
 
     return Container(
@@ -21,6 +23,21 @@ class AppRoot extends StatelessWidget {
 
   static IndexPage createIndexPage() {
     return IndexPage();
+  }
+
+  printScreenInformation() async {
+    PackageInfo info = await PackageInfo.fromPlatform();
+    String? version = SpUtil.getString(VERSION_KEY);
+    if (version == null || (version != null && version != info.version)) {
+      print('设备宽度:${1.sw}dp');
+      print('设备高度:${1.sh}dp');
+      print('底部安全区距离:${ScreenUtil().bottomBarHeight}dp');
+      print('状态栏高度:${ScreenUtil().statusBarHeight}dp');
+      print('系统的字体缩放比例:${ScreenUtil().textScaleFactor}');
+      print('屏幕方向:${ScreenUtil().orientation}');
+
+      SpUtil.putString(VERSION_KEY, info.version);
+    }
   }
 }
 

@@ -12,6 +12,7 @@ export 'package:provider/provider.dart';
 export 'package:webview_flutter/webview_flutter.dart';
 export 'package:fluttertoast/fluttertoast.dart';
 export 'package:package_info/package_info.dart';
+export 'package:device_info/device_info.dart';
 export '../util/flutter_screenutil/flutter_screenutil.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export '../third_party/keyboard_actions/keyboard_actions.dart';

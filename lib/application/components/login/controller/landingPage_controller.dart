@@ -11,14 +11,6 @@ class LandingPageController extends StatefulWidget {
 
 class _LandingPageControllerState extends State<LandingPageController> {
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-
-    printScreenInformation();
-  }
-
-  @override
   Widget build(BuildContext context) {
     double height = 1.sh > 800 ? (150.h + 46.sm) : (139.h + 46.sm);
 
@@ -44,15 +36,6 @@ class _LandingPageControllerState extends State<LandingPageController> {
       ),
     );
   }
-}
-
-printScreenInformation() {
-  print('设备宽度:${1.sw}dp');
-  print('设备高度:${1.sh}dp');
-  print('底部安全区距离:${ScreenUtil().bottomBarHeight}dp');
-  print('状态栏高度:${ScreenUtil().statusBarHeight}dp');
-  print('系统的字体缩放比例:${ScreenUtil().textScaleFactor}');
-  print('屏幕方向:${ScreenUtil().orientation}');
 }
 
 /**背景图 */
