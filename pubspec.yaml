@@ -93,6 +93,7 @@ flutter:
   assets:
     - assets/login/btn_login_bg.png
     - assets/login/login_bg.png
+    
     - assets/common/arrow_enter.png
     - assets/login/login_bar_back_icon.png
     - assets/common/clear_button.png
