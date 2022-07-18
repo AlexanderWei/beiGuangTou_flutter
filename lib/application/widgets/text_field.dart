@@ -98,7 +98,7 @@ class _MyTextFieldState extends State<MyTextField> {
       ),
       child: Stack(children: [
         Align(
-          alignment: Alignment(-1, 0),
+          alignment: const Alignment(-1, 0),
           child: TextField(
             onEditingComplete: widget.onEditingComplete,
             textInputAction: widget.inputAction,
@@ -107,6 +107,7 @@ class _MyTextFieldState extends State<MyTextField> {
             autofocus: widget.autofocus,
             controller: widget.controller,
             decoration: InputDecoration(
+              suffix: const SizedBox(width: 33),
               hintText: widget.placeholder,
               hintStyle: widget.placeholderStyle,
               counterText: "",

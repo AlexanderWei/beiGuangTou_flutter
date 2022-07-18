@@ -155,7 +155,7 @@ class _VerificationBox extends State<VerificationBox> {
                   decoration: widget.decoration,
                   borderRadius: widget.borderRadius,
                   borderWidth: widget.borderWidth,
-                  borderColor: (_controller.text.length == index
+                  borderColor: (_controller.text.length > index
                           ? widget.focusBorderColor
                           : widget.borderColor) ??
                       widget.borderColor,

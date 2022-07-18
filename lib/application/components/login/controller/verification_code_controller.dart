@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/application/support_file/common_header.dart';
+import '../../../third_party/flutter_verification_box/verification_box.dart';
 
 class VerificationCodeController extends StatelessWidget {
   VerificationCodeController({Key? key, this.phoneNum = ""}) : super(key: key);
@@ -20,14 +21,13 @@ class VerificationCodeController extends StatelessWidget {
         ),
         elevation: 0,
       ),
-      body: Container(
-        child: MyScrollView(
-          children: [
-            title(),
-            phoneNumber(),
-          ],
-          isScrollable: false,
-        ),
+      body: MyScrollView(
+        children: [
+          title(),
+          phoneNumber(),
+          verificationCodeBox(),
+        ],
+        isScrollable: false,
       ),
     );
   }
@@ -58,7 +58,6 @@ class VerificationCodeController extends StatelessWidget {
         left: 0,
         right: 0,
       ),
-      color: Colors.purple,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -70,12 +69,35 @@ class VerificationCodeController extends StatelessWidget {
             ),
           ),
           Text(
-            "$phoneNum",
+            "${(phoneNum.length >= 7 ? TextUtil.hideNumber(phoneNum) : phoneNum)}",
             style: TextStyle(
               fontSize: 14.sm,
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  // 验证码输入框
+  Widget verificationCodeBox() {
+    return Container(
+      margin: EdgeInsets.fromLTRB(25.sm, 38.sm, 25.sm, 0),
+      height: 50.sm,
+      child: VerificationBox(
+        onSubmitted: ((value) {
+          fLog("👩${value}", StackTrace.current);
+        }),
+        type: VerificationBoxItemType.underline,
+        showCursor: true,
+        itemWidget: 45.sm,
+        borderWidth: 1,
+        focusBorderColor: Colors.black,
+        cursorColor: Theme_Yellow,
+        textStyle: TextStyle(
+          color: Theme_Yellow,
+          fontSize: 28.sm,
+        ),
       ),
     );
   }
