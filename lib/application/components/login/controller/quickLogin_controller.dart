@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/application/components/login/controller/verification_code_controller.dart';
 import 'package:flutter_application/application/components/login/view/accountPwdLogin_view.dart';
 import 'package:flutter_application/application/support_file/common_header.dart';
 
@@ -218,6 +219,11 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
 
   /** 检查用户手机号状态 */
   checkPhoneNumber(String phoneNum) {
+    VerificationCodeController codePage = VerificationCodeController(
+      phoneNum: _phoneController.text,
+    );
+    NavigatorUtil.pushTo(context: context, function: codePage);
+    return;
     if (phoneNum.isEmpty) {
       Helper.showToast(msg: "手机号不能为空！");
       return;
