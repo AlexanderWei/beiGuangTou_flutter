@@ -26,6 +26,7 @@ class VerificationCodeController extends StatelessWidget {
           title(),
           phoneNumber(),
           verificationCodeBox(),
+          resendButton(),
         ],
         isScrollable: false,
       ),
@@ -98,6 +99,26 @@ class VerificationCodeController extends StatelessWidget {
           color: Theme_Yellow,
           fontSize: 28.sm,
         ),
+      ),
+    );
+  }
+
+  Widget resendButton() {
+    return Container(
+      child: TimerButton(
+        callback: () {
+          fLog("👩开始发送验证码啰！", StackTrace.current);
+        },
+        totalTime: 60,
+        isAutoCountdown: true,
+        subtitle: " 秒后重新发送验证码",
+        textStyle: TextStyle(fontSize: 14, color: Theme_Yellow),
+        bgColor: Colors.transparent,
+        title: "重新发送",
+      ),
+      margin: EdgeInsets.only(
+        left: 25.sm,
+        top: 10.sm,
       ),
     );
   }
