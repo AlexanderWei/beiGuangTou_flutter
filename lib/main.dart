@@ -35,11 +35,9 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
+        S.delegate,
       ],
-      supportedLocales: [
-        Locale.fromSubtags(languageCode: "en"),
-        Locale.fromSubtags(languageCode: "zh"),
-      ],
+      supportedLocales: S.delegate.supportedLocales,
       theme: ThemeData(
         // This is the theme of your application.
         //

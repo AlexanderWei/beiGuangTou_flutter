@@ -79,7 +79,7 @@ Widget quickLoginButton(BuildContext context) {
       cornerRadius: 8.sm,
       width: 1.sw - 48 * 2.sm,
       height: 46.sm,
-      text: "快速登录");
+      text: S.of(context).quick_login);
 }
 
 /**新用户注册按钮 */

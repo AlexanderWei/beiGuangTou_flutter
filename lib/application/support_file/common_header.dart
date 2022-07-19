@@ -5,6 +5,7 @@ export 'package:flutter/services.dart';
 
 export 'dart:async';
 export 'dart:io';
+export '../../generated/l10n.dart';
 
 export 'package:dio/dio.dart';
 export 'package:flutter_localizations/flutter_localizations.dart';
