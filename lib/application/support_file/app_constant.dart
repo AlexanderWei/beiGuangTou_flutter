@@ -8,3 +8,4 @@ const String VERSION_KEY = "appVersionKey";
 const Color Theme_Yellow = Color(0xffCAA26F);
 const Color kBtnDisableColor = Color.fromRGBO(223, 223, 223, 1);
 const Color kTextGrayColor = Color(0xff979797);
+const Color KPlaceholdTextColor = Color.fromRGBO(183, 183, 183, 1);

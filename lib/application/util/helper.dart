@@ -25,17 +25,6 @@ class Helper {
     return MaterialColor(color.value, swatch as Map<int, Color>);
   }
 
-  static KeyboardActionsConfig getKeyboardActionsConfig(
-      BuildContext context, List<KeyboardActionsItem>? actions,
-      {bool nextFocus = true}) {
-    return KeyboardActionsConfig(
-      keyboardActionsPlatform: KeyboardActionsPlatform.ALL,
-      keyboardBarColor: Colors.grey[200],
-      nextFocus: nextFocus,
-      actions: actions,
-    );
-  }
-
   static showToast({
     required msg,
     ToastGravity gravity = ToastGravity.CENTER,

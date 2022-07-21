@@ -20,11 +20,11 @@ class AccountPwdLoginView extends StatelessWidget {
       children: [
         MyScrollView(
           isScrollable: false,
-          keyboardConfig: Helper.getKeyboardActionsConfig(context, [
+          keyboardItems: [
             KeyboardActionsItem(
                 focusNode: _phoneTxtNode, displayDoneButton: false),
             KeyboardActionsItem(focusNode: _pwdNode, displayDoneButton: false),
-          ]),
+          ],
           children: [
             _title(),
             _phoneText(),

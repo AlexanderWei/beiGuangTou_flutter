@@ -5,34 +5,32 @@ class MyScrollView extends StatelessWidget {
   MyScrollView({
     Key? key,
     required this.children,
-    this.keyboardConfig,
+    this.keyboardItems,
     this.isScrollable = true,
+    this.dismissKeyboardTapOutside = true,
+    this.nextFocus = true,
   }) : super(key: key);
 
   final List<Widget> children;
-  final KeyboardActionsConfig? keyboardConfig;
   bool isScrollable;
+
+  List<KeyboardActionsItem>? keyboardItems;
+  bool dismissKeyboardTapOutside;
+  bool nextFocus;
 
   @override
   Widget build(BuildContext context) {
-    Widget scrollView;
-
-    if (keyboardConfig != null) {
-      scrollView = KeyboardActions(
-        tapOutsideBehavior: TapOutsideBehavior.translucentDismiss,
-        config: keyboardConfig!,
-        child: SingleChildScrollView(
-          physics: (isScrollable == true
-              ? null
-              : const NeverScrollableScrollPhysics()),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: children,
-          ),
-        ),
-      );
-    } else {
-      scrollView = SingleChildScrollView(
+    return KeyboardActions(
+      tapOutsideBehavior: (dismissKeyboardTapOutside == true
+          ? TapOutsideBehavior.translucentDismiss
+          : TapOutsideBehavior.none),
+      config: KeyboardActionsConfig(
+        keyboardActionsPlatform: KeyboardActionsPlatform.ALL,
+        keyboardBarColor: Colors.grey[200],
+        nextFocus: nextFocus,
+        actions: keyboardItems ?? [],
+      ),
+      child: SingleChildScrollView(
         physics: (isScrollable == true
             ? null
             : const NeverScrollableScrollPhysics()),
@@ -40,9 +38,7 @@ class MyScrollView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: children,
         ),
-      );
-    }
-
-    return scrollView;
+      ),
+    );
   }
 }

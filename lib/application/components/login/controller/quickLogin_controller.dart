@@ -53,17 +53,14 @@ class _QuickLoginControllerState extends State<QuickLoginController> {
     switch (loginType) {
       case QuickLoginType.quickLoginTypeByPhone:
         return MyScrollView(
-          // isScrollable: false,
-          keyboardConfig: Helper.getKeyboardActionsConfig(
-              context,
-              [
-                KeyboardActionsItem(
-                    focusNode: _phoneTxtNode,
-                    onTapAction: () {
-                      checkPhoneNumber(_phoneController.text);
-                    }),
-              ],
-              nextFocus: false),
+          isScrollable: false,
+          nextFocus: false,
+          keyboardItems: [
+            KeyboardActionsItem(
+              focusNode: _phoneTxtNode,
+              displayActionBar: false,
+            ),
+          ],
           children: [
             // 标题
             Container(
