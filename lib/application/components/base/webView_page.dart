@@ -56,6 +56,7 @@ class _WebViewPageState extends State<WebViewPage> {
       ),
       body: Stack(children: [
         WebView(
+          backgroundColor: Colors.transparent,
           initialUrl: widget.url,
           javascriptMode: JavascriptMode.unrestricted,
           onWebViewCreated: (WebViewController webViewController) {

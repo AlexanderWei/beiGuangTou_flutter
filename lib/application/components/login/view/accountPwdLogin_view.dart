@@ -266,7 +266,7 @@ class _LoginButtonState extends State<LoginButton> {
 
           if ("${resp["Status"]}" == "0") {
             UserModel userModel = UserModel.fromJson(resp["data"]);
-            SpUtil.putObject(USER_KEY, userModel);
+            Helper.saveUserInfo(userModel);
 
             SpUtil.putBool("isLogined", true);
             NavigatorUtil.popToRoot(

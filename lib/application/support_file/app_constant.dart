@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 const String Base_Url = "https://www.beiguangtou.com/api1/";
 
-const String USER_KEY = "userModelKey";
 const String VERSION_KEY = "appVersionKey";
 
 /** 颜色 */

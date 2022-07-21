@@ -27,7 +27,7 @@ class _LinearProgressState extends State<LinearProgress> {
     super.initState();
 
     widget.progress.addListener(() {
-      //数值改变的监听
+      // 数值改变的监听
       setState(() {
         widget.value = widget.progress.value;
       });
@@ -45,7 +45,7 @@ class _LinearProgressState extends State<LinearProgress> {
         minHeight: widget.minHeight,
       );
     }
-    return SizedBox.shrink();
+    return const SizedBox.shrink();
   }
 }
 

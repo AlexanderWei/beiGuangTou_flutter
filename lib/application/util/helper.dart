@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../support_file/common_header.dart';
 
 class Helper {
+  static const String _userKey = "userModelKey";
+
   /** 把普通的颜色值转换成 MaterialColor */
   static MaterialColor createMaterialColor(Color color) {
     List strengths = <double>[.05];
@@ -68,10 +70,15 @@ class Helper {
     Navigator.pop(context);
   }
 
+  /** 保存用户信息至本地 */
+  static saveUserInfo(UserModel userModel) {
+    SpUtil.putObject(_userKey, userModel);
+  }
+
   /** 获取存储在本地的用户信息 */
   static UserModel? getUser() {
     UserModel? user = SpUtil.getObj(
-        USER_KEY, (v) => UserModel.fromJson(v as Map<String, dynamic>));
+        _userKey, (v) => UserModel.fromJson(v as Map<String, dynamic>));
     return user;
   }
 
