@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/application/components/base/app_root.dart';
 import 'package:flutter_application/application/provider/root_provider.dart';
 import '../../../support_file/common_header.dart';
+import '../controller/retrieve_password_controller.dart';
 
 class AccountPwdLoginView extends StatelessWidget {
   AccountPwdLoginView({Key? key}) : super(key: key);
@@ -33,7 +34,7 @@ class AccountPwdLoginView extends StatelessWidget {
               phoneController: _phoneController,
               pwdController: _pwdController,
             ),
-            _forgetPwdButton(),
+            _forgetPwdButton(context),
           ],
         ),
         relatedAgreements(context),
@@ -138,7 +139,7 @@ class AccountPwdLoginView extends StatelessWidget {
   }
 
   /** 忘记密码 */
-  Widget _forgetPwdButton() {
+  Widget _forgetPwdButton(BuildContext context) {
     return Container(
       width: 1.sw - 2 * 24.sm,
       height: 30,
@@ -148,7 +149,8 @@ class AccountPwdLoginView extends StatelessWidget {
           Expanded(child: SizedBox()),
           InkWell(
             onTap: () {
-              print("👩忘记密码");
+              NavigatorUtil.pushTo(
+                  context: context, function: RetrievePasswordController());
             },
             child: Text(
               "忘记密码？",
