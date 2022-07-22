@@ -10,6 +10,7 @@ class MyTextField extends StatefulWidget {
     required this.placeholder,
     this.placeholderStyle,
     this.text = "",
+    this.textStyle,
     this.bgColor = Colors.white,
     this.cornerRadius = 0.0,
     this.margin = EdgeInsets.zero,
@@ -40,6 +41,7 @@ class MyTextField extends StatefulWidget {
   String text;
   String placeholder;
   TextStyle? placeholderStyle;
+  TextStyle? textStyle;
   TextInputType keyboardType;
   TextEditingController controller;
   int? maxLength;
@@ -106,6 +108,7 @@ class _MyTextFieldState extends State<MyTextField> {
             focusNode: widget.focusNode,
             autofocus: widget.autofocus,
             controller: widget.controller,
+            style: widget.textStyle,
             decoration: InputDecoration(
               suffix: const SizedBox(width: 33),
               hintText: widget.placeholder,

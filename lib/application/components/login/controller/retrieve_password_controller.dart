@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import '../../../support_file/common_header.dart';
 
 class RetrievePasswordController extends StatelessWidget {
-  RetrievePasswordController({Key? key}) : super(key: key);
+  RetrievePasswordController({Key? key}) : super(key: key) {
+    _phoneController.addListener(() {});
+  }
 
   TextField _phoneTextField = TextField();
   TextEditingController _phoneController = TextEditingController();
@@ -27,6 +29,7 @@ class RetrievePasswordController extends StatelessWidget {
           _titleLabel(),
           _subtitleLabel(),
           _phoneTextWidget(),
+          NextStepButton(),
         ],
         keyboardItems: [
           KeyboardActionsItem(
@@ -87,6 +90,74 @@ class RetrievePasswordController extends StatelessWidget {
       autofocus: true,
       focusNode: _phoneFocusNode,
       keyboardType: TextInputType.number,
+      placeholderStyle: TextStyle(
+        fontSize: 14.sm,
+        color: KPlaceholdTextColor,
+      ),
+      textStyle: TextStyle(
+        fontSize: 14.sm,
+      ),
     );
   }
 }
+
+class NextStepButton extends StatelessWidget {
+  const NextStepButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MyTextButton(
+      onPressed: () {
+        print("👩来了。");
+      },
+      width: 1.sw - 2 * 25.sm,
+      height: 45.sm,
+      text: "下一步",
+      bgColor: (widget.isEnable == true ? Theme_Yellow : kBtnDisableColor),
+      margin: EdgeInsets.only(
+        left: 25.sm,
+        top: 42.sm,
+      ),
+      cornerRadius: 4.sm,
+    );
+  }
+}
+
+// class NextStepButton extends StatefulWidget {
+//   NextStepButton({Key? key, required this.isEnable}) : super(key: key) {
+//     print("👩🤰🐷${this.isEnable}");
+//   }
+
+//   bool isEnable;
+
+//   @override
+//   State<NextStepButton> createState() => _NextStepButtonState();
+// }
+
+// class _NextStepButtonState extends State<NextStepButton> {
+//   @override
+//   void initState() {
+//     // TODO: implement initState
+//     super.initState();
+
+//     setState(() {});
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MyTextButton(
+//       onPressed: () {
+//         print("👩来了。");
+//       },
+//       width: 1.sw - 2 * 25.sm,
+//       height: 45.sm,
+//       text: "下一步",
+//       bgColor: (widget.isEnable == true ? Theme_Yellow : kBtnDisableColor),
+//       margin: EdgeInsets.only(
+//         left: 25.sm,
+//         top: 42.sm,
+//       ),
+//       cornerRadius: 4.sm,
+//     );
+//   }
+// }
