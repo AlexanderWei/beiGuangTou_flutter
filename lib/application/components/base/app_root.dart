@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../support_file/common_header.dart';
-import '../../provider/root_provider.dart';
 
 class AppRoot extends StatelessWidget {
   const AppRoot({Key? key}) : super(key: key);
