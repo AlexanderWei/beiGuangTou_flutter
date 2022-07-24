@@ -39,6 +39,5 @@ export '../components/base/webView_page.dart';
 export '../service/login_service.dart';
 
 export '../provider/root_provider.dart';
-export '../provider/login_provider.dart';
 
 export '../components/login/model/user_model.dart';

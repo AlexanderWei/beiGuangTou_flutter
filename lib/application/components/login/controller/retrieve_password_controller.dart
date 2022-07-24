@@ -2,7 +2,30 @@ import 'package:flutter/material.dart';
 import '../../../support_file/common_header.dart';
 
 class RetrievePasswordController extends StatelessWidget {
-  RetrievePasswordController({Key? key}) : super(key: key);
+  const RetrievePasswordController({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => Provider()),
+      ],
+      child: RetrievePasswordPage(),
+    );
+  }
+}
+
+class Provider with ChangeNotifier {
+  bool isEnableNext = false;
+  setEnableNext(bool enable) {
+    isEnableNext = enable;
+
+    notifyListeners();
+  }
+}
+
+class RetrievePasswordPage extends StatelessWidget {
+  RetrievePasswordPage({Key? key}) : super(key: key);
 
   TextField _phoneTextField = TextField();
   final TextEditingController _phoneController = TextEditingController();
@@ -11,9 +34,7 @@ class RetrievePasswordController extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _phoneController.addListener(() {
-      context
-          .read<LoginProvider>()
-          .setEnableRetrievePwd(_phoneController.text.isNotEmpty);
+      context.read<Provider>().setEnableNext(_phoneController.text.isNotEmpty);
     });
 
     return Scaffold(
@@ -101,6 +122,7 @@ class RetrievePasswordController extends StatelessWidget {
       textStyle: TextStyle(
         fontSize: 14.sm,
       ),
+      maxLength: 11,
     );
   }
 }
@@ -110,7 +132,7 @@ class NextStepButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isEnable = context.watch<LoginProvider>().isNext_retrieve_password;
+    bool isEnable = context.watch<Provider>().isEnableNext;
 
     return MyTextButton(
       onPressed: (isEnable == true
