@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../support_file/common_header.dart';
+import '../third_party/keyboard_actions/keyboard_actions.dart';
 
 class MyListView extends StatelessWidget {
   MyListView({
@@ -25,7 +25,6 @@ class MyListView extends StatelessWidget {
       config: KeyboardActionsConfig(
         keyboardActionsPlatform: KeyboardActionsPlatform.ALL,
         keyboardBarColor: Colors.grey[200],
-        nextFocus: false,
         actions: keyboardItems ?? [],
       ),
       child: ListView(

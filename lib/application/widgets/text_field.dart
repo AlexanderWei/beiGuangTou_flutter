@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/application/support_file/common_header.dart';
+import '../support_file/common_header.dart';
 
 class MyTextField extends StatefulWidget {
   MyTextField({
