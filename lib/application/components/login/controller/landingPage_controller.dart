@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../support_file/common_header.dart';
 import 'quickLogin_controller.dart';
+import 'register_controller.dart';
 
 class LandingPageController extends StatefulWidget {
   LandingPageController({Key? key}) : super(key: key);
@@ -85,7 +86,9 @@ Widget quickLoginButton(BuildContext context) {
 /**新用户注册按钮 */
 Widget registerButton(BuildContext context) {
   return MyTextButton(
-      onPressed: null,
+      onPressed: () {
+        NavigatorUtil.pushTo(context: context, function: RegisterController());
+      },
       textColor: Theme_Yellow,
       bgColor: Colors.white,
       cornerRadius: 8.sm,
